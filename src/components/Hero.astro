@@ -1,0 +1,77 @@
+---
+import { images } from '../data/images';
+
+export interface Props {
+  eyebrow?: string;
+  headline: string;
+  subhead?: string;
+  /** Image registry key — defaults to "hero". Set false to omit image (text-only hero). */
+  imageKey?: keyof typeof images | false;
+  variant?: 'navy' | 'black' | 'blue' | 'yellow';
+  align?: 'left' | 'center';
+  /** Eager-load the image (true for the LCP hero on the home page). */
+  eager?: boolean;
+}
+
+const {
+  eyebrow,
+  headline,
+  subhead,
+  imageKey = 'hero',
+  variant = 'navy',
+  align = 'left',
+  eager = false,
+} = Astro.props;
+
+const img = imageKey ? images[imageKey] : null;
+
+// "blue" variant uses the darker blue so white text passes WCAG AA
+const bgClass = {
+  navy: 'bg-brand-navy',
+  black: 'bg-black',
+  blue: 'bg-brand-blueDark',
+  yellow: 'bg-brand-yellow',
+}[variant];
+
+const textClass = variant === 'yellow' ? 'text-brand-navy' : 'text-white';
+const eyebrowClass =
+  variant === 'yellow' ? 'text-brand-navy/80' : variant === 'black' ? 'text-brand-yellow' : 'text-brand-yellow';
+---
+
+<section class:list={['relative isolate overflow-hidden', bgClass, textClass]}>
+  {img && (
+    <>
+      <img
+        src={img.src}
+        alt={img.alt}
+        width={img.width}
+        height={img.height}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding={eager ? 'sync' : 'async'}
+        fetchpriority={eager ? 'high' : undefined}
+        class="absolute inset-0 -z-10 h-full w-full object-cover opacity-40"
+      />
+      <div class:list={['absolute inset-0 -z-10', variant === 'yellow' ? 'bg-brand-yellow/40' : 'bg-gradient-to-br from-black/55 to-black/30']}></div>
+    </>
+  )}
+
+  <div class="container-page py-20 sm:py-28 lg:py-36">
+    <div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+      {eyebrow && (
+        <p class:list={['text-xs font-semibold uppercase tracking-[0.18em]', eyebrowClass]}>{eyebrow}</p>
+      )}
+      <h1 class="mt-3 font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+        {headline}
+      </h1>
+      {subhead && (
+        <p class:list={['mt-5 text-lg sm:text-xl max-w-2xl', align === 'center' && 'mx-auto', variant === 'yellow' ? 'text-brand-navy' : 'text-white/90']}>
+          {subhead}
+        </p>
+      )}
+      <div class:list={['mt-8 flex flex-wrap gap-3', align === 'center' && 'justify-center']}>
+        <slot name="ctas" />
+      </div>
+      <slot />
+    </div>
+  </div>
+</section>

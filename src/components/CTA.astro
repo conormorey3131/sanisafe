@@ -1,0 +1,46 @@
+---
+import { site } from '../data/site';
+export interface Props {
+  title?: string;
+  body?: string;
+  variant?: 'navy' | 'blue' | 'green' | 'yellow';
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}
+
+const {
+  title = 'Based in Ennis. Working nationwide. Quotes within 24 hours.',
+  body = 'Tell us about the floor, the use of the space, and any safety concerns. We will come back to you within one working day.',
+  variant = 'navy',
+  primary = { label: 'Request a free quote', href: '/contact' },
+  secondary = { label: 'Email info@sanisafe.ie', href: `mailto:${site.email}` },
+} = Astro.props;
+
+// Coloured backgrounds use darker variants so white text passes WCAG AA
+const bg = {
+  navy: 'bg-brand-navy text-white',
+  blue: 'bg-brand-blueDark text-white',
+  green: 'bg-brand-greenDark text-white',
+  yellow: 'bg-brand-yellow text-brand-navy',
+}[variant];
+
+// Yellow CTA needs full navy text for AA contrast; on dark variants white/85 is fine.
+const textClass = (variant === 'yellow') ? 'text-brand-navy' : 'text-white/90';
+---
+
+<section class:list={[bg]}>
+  <div class="container-page py-14 sm:py-16 lg:py-20 flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+    <div class="max-w-2xl">
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl tracking-tight">{title}</h2>
+      <p class:list={['mt-3', textClass]}>{body}</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a href={primary.href} class:list={[variant === 'navy' || variant === 'blue' ? 'btn-primary' : 'btn-navy']}>{primary.label}</a>
+      {secondary && (
+        <a href={secondary.href} class={variant === 'navy' || variant === 'blue' ? 'btn-secondary' : 'btn-secondary'}>
+          {secondary.label}
+        </a>
+      )}
+    </div>
+  </div>
+</section>

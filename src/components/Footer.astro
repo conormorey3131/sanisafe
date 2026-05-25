@@ -1,0 +1,85 @@
+---
+import { services, sectors, site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-navy text-white">
+  <div class="container-page py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="flex items-center gap-3">
+        <img
+          src="/logo.jpeg"
+          alt="SaniSafe Solutions"
+          width="56"
+          height="56"
+          loading="lazy"
+          class="h-14 w-14 rounded-md object-contain bg-white p-1"
+        />
+        <div>
+          <p class="font-display font-extrabold text-lg">SaniSafe Solutions</p>
+          <p class="text-sm text-white/70">{site.tagline}</p>
+        </div>
+      </div>
+      <p class="mt-5 text-sm text-white/80 max-w-xs">
+        {site.location.streetAddressDisplay}
+      </p>
+      <ul class="mt-4 grid gap-1 text-sm">
+        <li>
+          <a class="text-white hover:text-brand-yellow" href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li>
+          <a class="text-white hover:text-brand-yellow" href={site.phoneHref}>{site.phoneDisplay}</a>
+        </li>
+        <li class="text-white/70">{site.hours}</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-yellow">Services</h2>
+      <ul class="mt-4 grid gap-2 text-sm">
+        {services.map((s) => (
+          <li><a class="text-white/90 hover:text-brand-yellow" href={`/services/${s.slug}`}>{s.title}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-yellow">Sectors</h2>
+      <ul class="mt-4 grid gap-2 text-sm">
+        {sectors.map((s) => (
+          <li><a class="text-white/90 hover:text-brand-yellow" href={`/sectors#${s.slug}`}>{s.title}</a></li>
+        ))}
+      </ul>
+      <h2 class="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-brand-yellow">Company</h2>
+      <ul class="mt-4 grid gap-2 text-sm">
+        <li><a class="text-white/90 hover:text-brand-yellow" href="/about">About</a></li>
+        <li><a class="text-white/90 hover:text-brand-yellow" href="/contact">Contact</a></li>
+        <li><a class="text-white/90 hover:text-brand-yellow" href="/privacy">Privacy</a></li>
+        <li><a class="text-white/90 hover:text-brand-yellow" href="/cookies">Cookies</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-yellow">Get in touch</h2>
+      <p class="mt-4 text-sm text-white/85">Based in Ennis. Working nationwide. Quotes within 24 hours.</p>
+      <a href="/contact" class="btn-primary mt-5">Request a quote</a>
+      <div class="mt-6 flex gap-3 text-white/80">
+        {/* TODO: real social links */}
+        <a href={site.social.instagram} aria-label="Instagram" class="hover:text-brand-yellow">Instagram</a>
+        <span aria-hidden="true">·</span>
+        <a href={site.social.linkedin} aria-label="LinkedIn" class="hover:text-brand-yellow">LinkedIn</a>
+        <span aria-hidden="true">·</span>
+        <a href={site.social.facebook} aria-label="Facebook" class="hover:text-brand-yellow">Facebook</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="container-page py-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-xs text-white/70">
+      <p>© {year} SaniSafe Solutions. All rights reserved.</p>
+      {/* TODO: replace placeholder with real CRO number once issued */}
+      <span class="cro-placeholder" data-cro-placeholder>{site.croDisplay}</span>
+      <p>Ennis, Co. Clare — serving all of Ireland.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,46 @@
+---
+export interface Props {
+  number: string;
+  caption: string;
+  attribution: string;
+  body: string;
+  ctaHref: string;
+  ctaLabel: string;
+}
+const { number, caption, attribution, body, ctaHref, ctaLabel } = Astro.props;
+---
+
+<section class="bg-brand-blueDark text-white">
+  <div class="container-page py-16 sm:py-20 lg:py-24 grid gap-10 lg:grid-cols-12 items-center">
+    <div class="lg:col-span-5 flex items-center gap-6">
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 140 180"
+        class="h-32 w-auto sm:h-40 lg:h-48 shrink-0 text-white"
+      >
+        <!-- Slipping figure pictogram (white silhouette) -->
+        <g fill="currentColor">
+          <circle cx="58" cy="22" r="14" />
+          <path d="M44 40 q12 -4 28 0 l8 22 -14 14 -8 -8 -6 14 -10 -6 8 -16 z" />
+          <path d="M62 78 q12 -2 22 8 l24 22 -10 10 -22 -18 -8 12 -16 -6 14 -22 z" />
+          <path d="M30 130 q22 -4 60 -6 l52 -2 v8 q-30 4 -60 8 l-46 4 z" opacity="0.85" />
+          <path d="M20 158 h120 v6 H20 z" opacity="0.6" />
+        </g>
+      </svg>
+      <div>
+        <p class="font-display font-extrabold leading-none text-[5rem] sm:text-[6rem] lg:text-[7.5rem]">95%</p>
+        <p class="mt-1 text-lg sm:text-xl font-semibold text-white/95 max-w-xs">{caption}</p>
+        <p class="mt-1 text-xs uppercase tracking-[0.18em] text-white/90">{attribution}</p>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <p class="text-lg sm:text-xl text-white/90 max-w-2xl">{body}</p>
+      <a href={ctaHref} class="btn bg-white text-brand-navy hover:bg-white/90 mt-6">
+        {ctaLabel}
+        <svg aria-hidden="true" viewBox="0 0 20 20" class="h-4 w-4"><path fill="currentColor" d="M7.5 5 14 11.5 7.5 18l-1.5-1.5 5-5-5-5z"/></svg>
+      </a>
+      <!-- number prop kept for future use: {number} -->
+    </div>
+  </div>
+</section>
+<!-- TODO: confirm with client whether the 95% figure cites the UK HSE or the Irish HSA. Currently attributed to UK HSE. -->

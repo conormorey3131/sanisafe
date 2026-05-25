@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import { site } from '../data/site';
+const updated = '2025-01';
+---
+
+<Layout
+  title="Cookies Notice (DRAFT) | SaniSafe Solutions"
+  description="DRAFT cookies notice for SaniSafe Solutions."
+  noindex
+>
+  <Section variant="navy" size="tight">
+    <p class="eyebrow text-brand-yellow">Legal</p>
+    <h1 class="font-display font-extrabold text-4xl sm:text-5xl mt-3 text-white">Cookies Notice</h1>
+    <p class="mt-4 text-white/80 max-w-2xl">
+      <span class="cro-placeholder">DRAFT — review and confirm cookie list before publication.</span>
+    </p>
+  </Section>
+
+  <Section variant="white">
+    <article class="prose-body max-w-prose grid gap-5 text-ink-charcoal">
+      <p class="text-sm text-ink-slate">Last updated: {updated}. This page is a DRAFT — it should be reviewed by the data controller before going live.</p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">What are cookies?</h2>
+      <p>Cookies are small files that a website stores on your device to make it work properly and to give us information about how it is used.</p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">What cookies we use</h2>
+      <p>
+        {/* TODO: confirm cookies actually deployed (analytics, form spam protection) once a tracker is added */}
+        At launch, this site uses no analytics or marketing cookies. If we add analytics later (for example
+        Plausible or a GDPR-compliant analytics tool), we will list the exact cookies here and update this page
+        before they are deployed.
+      </p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">Form spam protection</h2>
+      <p>
+        Our contact form uses a hidden honeypot field to filter out automated submissions. It does not set
+        cookies. If we later add reCAPTCHA or hCaptcha for spam protection, those services may set cookies and we
+        will list them here.
+      </p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">Managing cookies</h2>
+      <p>
+        You can manage or delete cookies through your browser settings. Restricting cookies will not affect the
+        core of this site — there are no cookies set at launch.
+      </p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">Contact</h2>
+      <p>Questions about cookies or data: <a class="text-brand-navy underline" href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </article>
+  </Section>
+</Layout>

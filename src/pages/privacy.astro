@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import { site } from '../data/site';
+const updated = '2025-01';
+---
+
+<Layout
+  title="Privacy Notice (DRAFT) | SaniSafe Solutions"
+  description="DRAFT GDPR-aware privacy notice for SaniSafe Solutions."
+  noindex
+>
+  <Section variant="navy" size="tight">
+    <p class="eyebrow text-brand-yellow">Legal</p>
+    <h1 class="font-display font-extrabold text-4xl sm:text-5xl mt-3 text-white">Privacy Notice</h1>
+    <p class="mt-4 text-white/80 max-w-2xl">
+      <span class="cro-placeholder">DRAFT — for review by client and / or solicitor before publication.</span>
+    </p>
+  </Section>
+
+  <Section variant="white">
+    <article class="prose-body max-w-prose grid gap-5 text-ink-charcoal">
+      <p class="text-sm text-ink-slate">Last updated: {updated}. This page is a DRAFT — it should be reviewed by the data controller before going live.</p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">Who we are</h2>
+      <p>
+        SaniSafe Solutions (referred to as "we", "us" or "our") provides floor restoration and slip-safety services
+        in Ireland. We are based in Ennis, Co. Clare.
+      </p>
+      {/* TODO: replace placeholder with real CRO number once issued */}
+      <p><span class="cro-placeholder">{site.croDisplay}</span></p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">What data we collect</h2>
+      <ul class="list-disc pl-6 grid gap-2">
+        <li>Information you give us in the enquiry form: name, email, phone (optional), company (optional), the service you are interested in and a description of the floor.</li>
+        <li>Information from cookies and analytics — see <a class="text-brand-navy underline" href="/cookies">our cookies notice</a>.</li>
+        <li>Information you give us during a survey or site visit, including photographs of the floor.</li>
+      </ul>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">Why we use it</h2>
+      <ul class="list-disc pl-6 grid gap-2">
+        <li>To respond to your enquiry and prepare a quote.</li>
+        <li>To carry out the works you commission and to keep records that an insurer or auditor may request.</li>
+        <li>To improve the website and the way we communicate.</li>
+      </ul>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">Lawful basis</h2>
+      <p>
+        For enquiries and quoting, our lawful basis is the steps you ask us to take to enter into a contract. For
+        record-keeping after a job, our lawful basis is legitimate interest (insurer-defensible documentation) and,
+        where applicable, legal obligation.
+      </p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">How long we keep it</h2>
+      <p>
+        Enquiries that do not result in a job are deleted after 12 months. Records of completed jobs (including
+        pendulum reports and photographs) are retained for the period reasonably required by our insurer and by
+        law — typically 7 years.
+      </p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">Who we share it with</h2>
+      <p>
+        We do not sell personal data. We share information with service providers who help us run the business
+        (e.g. email hosting, form processing) on a need-to-know basis and under contract.
+      </p>
+
+      <h2 class="font-display font-extrabold text-2xl text-brand-navy">Your rights</h2>
+      <p>
+        Under GDPR you have the right to access, correct, delete or restrict the use of your personal data, and to
+        object to processing. To exercise any of these rights, email <a class="text-brand-navy underline" href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+      <p>
+        You can also complain to the Data Protection Commission — <a class="text-brand-navy underline" href="https://www.dataprotection.ie">dataprotection.ie</a>.
+      </p>
+
+      {/* TODO: confirm exact controller details, retention periods and processor list before publication */}
+    </article>
+  </Section>
+</Layout>

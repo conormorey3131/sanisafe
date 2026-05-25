@@ -1,0 +1,18 @@
+---
+export interface Props {
+  quote: string;
+  name: string;
+  role: string;
+}
+const { quote, name, role } = Astro.props;
+---
+
+{/* TODO: real testimonial */}
+<figure class="card p-6 sm:p-7 h-full flex flex-col">
+  <svg aria-hidden="true" viewBox="0 0 32 32" class="h-7 w-7 text-brand-blue"><path fill="currentColor" d="M12 8H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4l-2 4h4l4-8V10a2 2 0 0 0-2-2zm14 0h-6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4l-2 4h4l4-8V10a2 2 0 0 0-2-2z"/></svg>
+  <blockquote class="mt-4 text-ink-charcoal text-lg leading-relaxed flex-1">"{quote}"</blockquote>
+  <figcaption class="mt-5 border-t border-surface-grey pt-4">
+    <p class="font-display font-bold text-brand-navy">{name}</p>
+    <p class="text-sm text-ink-slate">{role}</p>
+  </figcaption>
+</figure>

@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import Hero from '../components/Hero.astro';
+import CTA from '../components/CTA.astro';
+import { images } from '../data/images';
+
+type SectorBlock = {
+  slug: string;
+  title: string;
+  intro: string;
+  imageKey: keyof typeof images;
+  bullets: string[];
+  audience: string;
+};
+
+const sectorBlocks: SectorBlock[] = [
+  {
+    slug: 'hospital-and-healthcare',
+    title: 'Hospital & Healthcare',
+    intro:
+      'Hospitals, primary-care centres, nursing homes and dental practices. Hard floors that are cleaned several times a day with detergents that can themselves change slip resistance.',
+    imageKey: 'sectorHospital',
+    bullets: [
+      'Pendulum testing scheduled around clinical use of the area.',
+      'Restoration of vinyl, terrazzo, ceramic and natural stone — all common in healthcare estates.',
+      'Anti-slip treatments that survive frequent wet cleaning.',
+      'Documented PTV per zone for H&S, infection-control and insurance files.',
+    ],
+    audience:
+      'Estates managers, infection-control leads and H&S officers in HSE, voluntary, private and primary-care settings.',
+  },
+  {
+    slug: 'commercial',
+    title: 'Commercial — hotels, retail, offices, leisure & schools',
+    intro:
+      'Customer-facing floors that have to look the part and stay safe under foot traffic, spills and frequent cleaning. Trading hours matter.',
+    imageKey: 'sectorCommercial',
+    bullets: [
+      'Hotels: lobby marble restoration over a weekend, pool surround anti-slip.',
+      'Retail: polished concrete and stone floors restored out of trading hours.',
+      'Offices: low-dust hardwood restoration with minimal disruption.',
+      'Leisure centres and schools: etched lane markers, hazard zones and pendulum testing on changing-room floors.',
+    ],
+    audience:
+      'Operations directors, facilities managers, general managers and procurement leads.',
+  },
+  {
+    slug: 'domestic',
+    title: 'Domestic',
+    intro:
+      'Marble lobbies, hardwood living areas, polished concrete kitchens, tiled bathrooms — the same standard of work we apply on commercial sites, at a price that makes sense for a home.',
+    imageKey: 'sectorDomestic',
+    bullets: [
+      'Restoration of marble, hardwood and tiled floors without ripping them out.',
+      'Anti-slip treatments for bathrooms, hallways and pool surrounds.',
+      'Honest assessment — we tell you when a re-coat is enough.',
+      'Clean, low-dust working methods in occupied homes.',
+    ],
+    audience: 'Homeowners and interior architects across Ireland.',
+  },
+];
+---
+
+<Layout
+  title="Sectors — Hospital, Commercial & Domestic Floor Restoration | SaniSafe Solutions"
+  description="SaniSafe Solutions works across hospitals & healthcare, commercial settings (hotels, retail, offices, leisure, schools) and domestic homes. Restoration, anti-slip treatments and pendulum slip testing."
+>
+  <Hero
+    eyebrow="Sectors we serve"
+    headline="One standard. Three different briefs."
+    subhead="The way a floor is used changes the brief. Compliance and infection control drive healthcare. Trading hours and brand drive commercial. Care and value drive domestic."
+    variant="navy"
+    imageKey="sectorCommercial"
+  >
+    <a slot="ctas" href="/contact" class="btn-primary">Request a quote</a>
+  </Hero>
+
+  {sectorBlocks.map((s, idx) => {
+    const img = images[s.imageKey];
+    const variant = idx % 2 === 0 ? 'white' : 'offwhite';
+    const reverse = idx % 2 === 1;
+    return (
+      <Section variant={variant} id={s.slug}>
+        <div class={`grid gap-10 lg:grid-cols-12 items-center ${reverse ? 'lg:[&>:first-child]:order-2' : ''}`}>
+          <div class="lg:col-span-6">
+            <div class="overflow-hidden rounded-xl shadow-card">
+              <img
+                src={img.src}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                loading="lazy"
+                class="block h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          <div class="lg:col-span-6">
+            <p class="eyebrow">Sector</p>
+            <h2 class="h-section mt-3">{s.title}</h2>
+            <p class="lead mt-4">{s.intro}</p>
+            <ul class="mt-6 grid gap-3 text-base text-ink-charcoal">
+              {s.bullets.map((b) => (
+                <li class="flex gap-3">
+                  <span aria-hidden="true" class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-green"></span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-5 text-sm text-ink-slate"><strong class="text-brand-navy">Who we talk to:</strong> {s.audience}</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="/contact" class="btn-primary">Request a quote</a>
+              <a href="/services/sliptest" class="btn-secondary">Pendulum slip test</a>
+            </div>
+          </div>
+        </div>
+      </Section>
+    );
+  })}
+
+  <CTA />
+</Layout>

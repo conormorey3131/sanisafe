@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CTA from '../../components/CTA.astro';
+import { services } from '../../data/site';
+---
+
+<Layout
+  title="Services — Floor Restoration & Slip Safety in Ireland | SaniSafe Solutions"
+  description="Marble and stone restoration, wooden floor restoration, polished concrete, anti-slip treatments, etching, and SlipTest pendulum testing. Nationwide service from Ennis."
+>
+  <Hero
+    eyebrow="What we offer"
+    headline="Six services. One contractor. From restoration to slip resistance."
+    subhead="Restoration of hard floors, treatments that raise slip resistance on wet surfaces, etched graphics for leisure and pendulum testing for insurer-grade reports."
+    variant="navy"
+    imageKey="hero"
+  >
+    <a slot="ctas" href="/contact" class="btn-primary">Request a quote</a>
+    <a slot="ctas" href="/services/sliptest" class="btn-yellow-outline">Book a SlipTest survey</a>
+  </Hero>
+
+  <Section variant="white">
+    <div class="max-w-2xl mb-10">
+      <p class="eyebrow">All services</p>
+      <h2 class="h-section mt-3">Pick the service you need.</h2>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => (
+        <ServiceCard
+          title={s.title}
+          promise={s.promise}
+          href={`/services/${s.slug}`}
+          imageKey={s.imageKey}
+          accent={s.accent}
+        />
+      ))}
+    </div>
+  </Section>
+
+  <Section variant="offwhite">
+    <div class="max-w-2xl">
+      <p class="eyebrow">How to pick</p>
+      <h2 class="h-section mt-3">Not sure which one you need?</h2>
+      <p class="lead mt-4">
+        If the floor is tired, dull or scratched, you want <a class="text-brand-navy underline" href="/services/marble-and-stone-restoration">restoration</a>.
+        If the floor is slippery when wet, you want an <a class="text-brand-navy underline" href="/services/anti-slip-treatments">anti-slip treatment</a> — and almost always a
+        <a class="text-brand-navy underline" href="/services/sliptest"> pendulum test</a> before and after so it is defensible. If you are not sure, we can scope it on a single visit.
+      </p>
+    </div>
+  </Section>
+
+  <CTA />
+</Layout>

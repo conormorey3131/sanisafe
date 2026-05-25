@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import CTA from '../../components/CTA.astro';
+import { serviceContent } from '../../data/serviceContent';
+import { images } from '../../data/images';
+import { site } from '../../data/site';
+
+const c = serviceContent['sliptest'];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'SlipTest — Pendulum Slip Testing & Insurance Reports',
+  brand: { '@type': 'Brand', name: 'SlipTest' },
+  provider: { '@type': 'LocalBusiness', name: 'SaniSafe Solutions', areaServed: 'IE' },
+  areaServed: 'IE',
+  description: c.metaDescription,
+});
+
+const faqLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: c.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+});
+
+const whenYouNeedIt = [
+  { title: 'New-build handover', body: 'Independent slip-resistance verification before sign-off.' },
+  { title: 'Post-incident', body: 'Objective measurement after a slip, to support investigation.' },
+  { title: 'Insurance renewal', body: 'Documented PTV per zone for your insurer or broker.' },
+  { title: 'Change of floor finish', body: 'Re-test after a new coating, polish or cleaning regime.' },
+  { title: 'Pre-litigation', body: 'A defensible reading, taken under controlled conditions.' },
+  { title: 'Routine H&S audit', body: 'Periodic measurement to track wear and cleaning impact.' },
+];
+
+const heroImg = images.serviceSlipTest;
+---
+
+<Layout title={c.metaTitle} description={c.metaDescription} jsonLd={[jsonLd, faqLd]}>
+  {/* ---------- HERO — yellow accent ---------- */}
+  <section class="relative isolate overflow-hidden bg-brand-yellow text-brand-navy">
+    <img
+      src={heroImg.src}
+      alt={heroImg.alt}
+      width={heroImg.width}
+      height={heroImg.height}
+      loading="eager"
+      decoding="sync"
+      fetchpriority="high"
+      class="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
+    />
+    <div class="container-page py-20 sm:py-28 lg:py-32">
+      <div class="flex items-center gap-5">
+        <img
+          src={site.subBrand.logo}
+          alt="SlipTest — Confidence in every step"
+          width="96"
+          height="96"
+          class="h-20 w-20 sm:h-24 sm:w-24 object-contain bg-white rounded-md shadow-card p-1"
+        />
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em]">SlipTest by SaniSafe Solutions</p>
+          <p class="text-sm sm:text-base font-semibold text-brand-navy">Confidence in every step.</p>
+        </div>
+      </div>
+      <h1 class="mt-7 font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+        Pendulum Slip Testing & Full Insurance Report Service.
+      </h1>
+      <p class="mt-5 text-lg sm:text-xl text-brand-navy max-w-2xl">
+        On-site pendulum testing to HSA guidance. A written report you can hand to an insurer, broker or auditor.
+        Treatment available if the PTV is below the safe threshold.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/contact" class="btn-navy">Book a SlipTest survey</a>
+        <a href="#what-is-pendulum-testing" class="btn-secondary">How pendulum testing works</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- What pendulum testing is ---------- */}
+  <Section variant="white" id="what-is-pendulum-testing">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <p class="eyebrow">What pendulum testing is</p>
+        <h2 class="h-section mt-3">A swing test, in plain English.</h2>
+      </div>
+      <div class="lg:col-span-7 prose-body space-y-4 max-w-prose">
+        <p>
+          The pendulum is the recognised method for measuring slip resistance, used in HSA guidance and UK HSE
+          guidance. A weighted rubber foot swings down across the floor and is slowed by the friction between the
+          foot and the surface. That friction becomes a number — the Pendulum Test Value, or PTV.
+        </p>
+        <p>
+          Higher PTV means lower slip risk. We measure each zone wet and dry, photograph the test positions, and
+          give you a written record. If the PTV sits below threshold, we recommend an anti-slip treatment, and we
+          re-test under the same conditions afterwards.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  {/* ---------- What you get ---------- */}
+  <Section variant="offwhite">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <p class="eyebrow">What you get</p>
+        <h2 class="h-section mt-3">A defensible record. Same day on most sites.</h2>
+      </div>
+      <div class="lg:col-span-7">
+        <ul class="grid gap-3 text-base text-ink-charcoal">
+          {c.whatWeDo.map((b) => (
+            <li class="flex gap-3">
+              <span aria-hidden="true" class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-yellow ring-2 ring-brand-navy"></span>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  {/* ---------- FULL-BLEED BLACK BAND — per spec §7 ---------- */}
+  <section class="bg-black text-white">
+    <div class="container-page py-20 sm:py-24 lg:py-28 grid gap-10 lg:grid-cols-12 items-center">
+      <div class="lg:col-span-4 flex justify-center">
+        <svg aria-hidden="true" viewBox="0 0 200 240" class="h-48 sm:h-56 lg:h-64 w-auto text-white">
+          <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="100" y1="20" x2="100" y2="70" />
+            <circle cx="100" cy="86" r="14" fill="currentColor" />
+            <line x1="100" y1="100" x2="40" y2="200" />
+            <line x1="40" y1="200" x2="160" y2="200" />
+            <path d="M50 200 q50 -30 100 0" opacity="0.6" />
+            <line x1="20" y1="220" x2="180" y2="220" />
+          </g>
+          <g fill="currentColor">
+            <rect x="100" y="18" width="2" height="6" />
+          </g>
+        </svg>
+      </div>
+      <div class="lg:col-span-8">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-yellow">SlipTest</p>
+        <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight">
+          Pendulum slip testing and full insurance report service.
+        </h2>
+        <p class="mt-4 text-white/80 max-w-2xl">
+          A written PTV-per-zone report that an insurer, broker or auditor can act on. One contractor, start to
+          finish — we test, we treat and we re-test.
+        </p>
+        <div class="mt-7">
+          <a href="/contact" class="btn-yellow">Book a SlipTest survey</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- When you need it ---------- */}
+  <Section variant="white">
+    <p class="eyebrow">When you need it</p>
+    <h2 class="h-section mt-3">Six common triggers for pendulum testing.</h2>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {whenYouNeedIt.map((w) => (
+        <div class="card p-6 h-full">
+          <h3 class="font-display font-extrabold text-lg text-brand-navy">{w.title}</h3>
+          <p class="mt-2 text-ink-slate">{w.body}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  {/* ---------- Why SaniSafe ---------- */}
+  <Section variant="offwhite">
+    <div class="max-w-3xl">
+      <p class="eyebrow">Why SaniSafe</p>
+      <h2 class="h-section mt-3">We test and we treat — so one contractor closes the loop.</h2>
+      <p class="lead mt-4">
+        Most slip-test providers stop at the report. We measure, recommend a treatment, apply it, and re-test under
+        the same conditions. You get one number to point at, one contractor to call, and a clean paper trail.
+      </p>
+    </div>
+  </Section>
+
+  {/* ---------- FAQ ---------- */}
+  <Section variant="white">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="h-section mt-3">Common questions.</h2>
+    <div class="mt-8 grid gap-4 max-w-3xl">
+      {c.faqs.map((f) => (
+        <details class="group rounded-lg border border-surface-grey bg-white open:shadow-card">
+          <summary class="cursor-pointer list-none px-5 py-4 flex items-center justify-between gap-4 font-semibold text-brand-navy">
+            <span>{f.q}</span>
+            <svg aria-hidden="true" viewBox="0 0 20 20" class="h-5 w-5 transition-transform group-open:rotate-180"><path fill="currentColor" d="M5 8l5 5 5-5z"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-ink-slate">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </Section>
+
+  <CTA
+    variant="yellow"
+    title="Book a SlipTest survey."
+    body="Tell us the building, the surfaces and when you need the report by. We will come back to you within one working day."
+    primary={{ label: 'Book a SlipTest survey', href: '/contact' }}
+    secondary={{ label: 'Email info@sanisafe.ie', href: 'mailto:info@sanisafe.ie' }}
+  />
+</Layout>

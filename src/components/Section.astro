@@ -1,0 +1,45 @@
+---
+export interface Props {
+  /** Background variant */
+  variant?: 'white' | 'offwhite' | 'navy' | 'blue' | 'black';
+  id?: string;
+  /** Vertical padding scale */
+  size?: 'default' | 'tight' | 'loose';
+  /** Full-bleed sections still need an inner container — set to false to opt out */
+  inner?: boolean;
+  class?: string;
+}
+
+const {
+  variant = 'white',
+  id,
+  size = 'default',
+  inner = true,
+  class: className = '',
+} = Astro.props;
+
+const variantClass = {
+  white: 'bg-white text-ink-charcoal',
+  offwhite: 'bg-surface-offwhite text-ink-charcoal',
+  navy: 'bg-brand-navy text-white',
+  // "blue" variant uses the darker blue so white text passes WCAG AA
+  blue: 'bg-brand-blueDark text-white',
+  black: 'bg-black text-white',
+}[variant];
+
+const sizeClass = {
+  default: 'section',
+  tight: 'section-tight',
+  loose: 'py-20 sm:py-28 lg:py-32',
+}[size];
+---
+
+<section id={id} class:list={[variantClass, sizeClass, className]}>
+  {inner ? (
+    <div class="container-page">
+      <slot />
+    </div>
+  ) : (
+    <slot />
+  )}
+</section>

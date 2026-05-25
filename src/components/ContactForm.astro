@@ -1,0 +1,93 @@
+---
+import { services, site } from '../data/site';
+export interface Props {
+  /** Show full service-of-interest dropdown */
+  detailed?: boolean;
+}
+const { detailed = true } = Astro.props;
+---
+
+<form
+  name="sanisafe-contact"
+  method="POST"
+  action="/contact?sent=true"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  class="grid gap-5"
+>
+  {/* Netlify hidden inputs */}
+  <input type="hidden" name="form-name" value="sanisafe-contact" />
+  <p class="hidden" aria-hidden="true">
+    <label>
+      Don't fill this out if you're human:
+      <input name="bot-field" tabIndex="-1" autocomplete="off" />
+    </label>
+  </p>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="name" class="block text-sm font-semibold text-brand-navy">Name <span aria-hidden="true" class="text-brand-blue">*</span></label>
+      <input
+        id="name" name="name" type="text" required autocomplete="name"
+        class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
+      />
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-semibold text-brand-navy">Email <span aria-hidden="true" class="text-brand-blue">*</span></label>
+      <input
+        id="email" name="email" type="email" required autocomplete="email"
+        class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
+      />
+    </div>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="phone" class="block text-sm font-semibold text-brand-navy">Phone</label>
+      <input
+        id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"
+        class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
+      />
+    </div>
+    <div>
+      <label for="company" class="block text-sm font-semibold text-brand-navy">Company / Site</label>
+      <input
+        id="company" name="company" type="text" autocomplete="organization"
+        class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
+      />
+    </div>
+  </div>
+
+  {detailed && (
+    <div>
+      <label for="service" class="block text-sm font-semibold text-brand-navy">Service of interest</label>
+      <select
+        id="service" name="service"
+        class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
+      >
+        <option value="">— Choose one —</option>
+        {services.map((s) => (
+          <option value={s.title}>{s.title}</option>
+        ))}
+        <option value="Other / not sure">Other / not sure</option>
+      </select>
+    </div>
+  )}
+
+  <div>
+    <label for="message" class="block text-sm font-semibold text-brand-navy">Tell us about the floor <span aria-hidden="true" class="text-brand-blue">*</span></label>
+    <textarea
+      id="message" name="message" rows="5" required
+      placeholder="Surface type, approximate area, any safety concerns, deadlines."
+      class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
+    ></textarea>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-4 pt-2">
+    <button type="submit" class="btn-primary">Send enquiry</button>
+    <a href={`mailto:${site.email}`} class="text-sm font-semibold text-brand-navy hover:underline">
+      Or email {site.email} directly
+    </a>
+  </div>
+  <p class="text-xs text-ink-slate">By submitting you agree to our <a class="underline" href="/privacy">privacy notice</a>.</p>
+</form>

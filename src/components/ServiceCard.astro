@@ -1,0 +1,67 @@
+---
+import { images, type ImageKey } from '../data/images';
+
+export interface Props {
+  title: string;
+  promise: string;
+  href: string;
+  imageKey: ImageKey;
+  accent: 'blue' | 'green' | 'yellow';
+}
+
+const { title, promise, href, imageKey, accent } = Astro.props;
+const img = images[imageKey];
+
+// Use darker variants for badge backgrounds so white text passes AA
+const accentBg = {
+  blue: 'bg-brand-blueDark',
+  green: 'bg-brand-greenDark',
+  yellow: 'bg-brand-yellow',
+}[accent];
+
+const accentText = accent === 'yellow' ? 'text-brand-navy' : 'text-white';
+const ringClass = {
+  blue: 'hover:ring-brand-blue/30',
+  green: 'hover:ring-brand-green/40',
+  yellow: 'hover:ring-brand-yellow/60',
+}[accent];
+---
+
+<a
+  href={href}
+  class:list={[
+    'group block card transition-shadow hover:shadow-lg hover:ring-4 ring-transparent',
+    ringClass,
+  ]}
+>
+  <div class="relative aspect-[4/3] overflow-hidden">
+    <img
+      src={img.src}
+      alt={img.alt}
+      width={img.width}
+      height={img.height}
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+    />
+    <span
+      class:list={[
+        'absolute top-3 left-3 inline-flex items-center rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider',
+        accentBg,
+        accentText,
+      ]}
+    >
+      {accent === 'yellow' ? 'SlipTest' : 'Service'}
+    </span>
+  </div>
+  <div class="p-6">
+    <h3 class="font-display font-extrabold text-xl text-brand-navy group-hover:underline decoration-2 underline-offset-4">
+      {title}
+    </h3>
+    <p class="mt-2 text-ink-slate">{promise}</p>
+    <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-navy">
+      Learn more
+      <svg aria-hidden="true" viewBox="0 0 20 20" class="h-4 w-4"><path fill="currentColor" d="M7.5 5 14 11.5 7.5 18l-1.5-1.5 5-5-5-5z"/></svg>
+    </span>
+  </div>
+</a>
