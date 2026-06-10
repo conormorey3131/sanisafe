@@ -5,9 +5,8 @@ export const site = {
   domain: 'sanisafe.ie',
   url: 'https://sanisafe.ie',
   email: 'info@sanisafe.ie',
-  // TODO: paste the Web3Forms access key for info@sanisafe.ie (free, instant at https://web3forms.com).
-  // Until this is set to a real key, the contact form falls back to opening the visitor's email app.
-  web3formsAccessKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
+  // Web3Forms access key for info@sanisafe.ie — delivers the contact form straight to the inbox.
+  web3formsAccessKey: '8d65c2b3-37b9-4b2b-85ea-382604596ef1',
   phoneDisplay: '+353 86 179 7079',
   phoneHref: 'tel:+353861797079',
   location: {
