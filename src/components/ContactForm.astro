@@ -7,22 +7,15 @@ export interface Props {
 const { detailed = true } = Astro.props;
 ---
 
-<form
-  name="sanisafe-contact"
-  method="POST"
-  action="/contact?sent=true"
-  data-netlify="true"
-  data-netlify-honeypot="bot-field"
-  class="grid gap-5"
->
-  {/* Netlify hidden inputs */}
-  <input type="hidden" name="form-name" value="sanisafe-contact" />
-  <p class="hidden" aria-hidden="true">
-    <label>
-      Don't fill this out if you're human:
-      <input name="bot-field" tabIndex="-1" autocomplete="off" />
-    </label>
-  </p>
+<form id="contact-form" class="grid gap-5">
+  {/* Web3Forms delivery — posts straight to the inbox tied to the access key */}
+  <input type="hidden" name="access_key" value={site.web3formsAccessKey} />
+  <input type="hidden" name="subject" value="New website enquiry — SaniSafe Solutions" />
+  <input type="hidden" name="from_name" value="SaniSafe Solutions website" />
+  {/* Honeypot — bots tick this, humans never see it */}
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <p id="contact-status" hidden></p>
 
   <div class="grid gap-5 sm:grid-cols-2">
     <div>
@@ -89,5 +82,84 @@ const { detailed = true } = Astro.props;
       Or email {site.email} directly
     </a>
   </div>
-  <p class="text-xs text-ink-slate">By submitting you agree to our <a class="underline" href="/privacy">privacy notice</a>.</p>
+  <p class="text-xs text-ink-slate">
+    We'll only use these details to reply to your enquiry. By submitting you agree to our
+    <a class="underline" href="/privacy">privacy notice</a>.
+  </p>
 </form>
+
+<script define:vars={{ endpoint: 'https://api.web3forms.com/submit', accessKey: site.web3formsAccessKey, email: site.email }}>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-status');
+  const PLACEHOLDER = 'YOUR_WEB3FORMS_ACCESS_KEY';
+
+  function setStatus(message, ok) {
+    if (!status) return;
+    status.textContent = message;
+    status.hidden = false;
+    status.className =
+      'rounded-md px-4 py-3 text-sm ' +
+      (ok
+        ? 'border border-brand-green/40 bg-brand-green/10 text-brand-navy'
+        : 'border border-red-300 bg-red-50 text-red-800');
+    status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const service = (data.get('service') || '').toString().trim();
+    data.set('subject', service ? `Website enquiry — ${service}` : 'Website enquiry — SaniSafe Solutions');
+
+    // Fallback while no access key is configured: open the visitor's email app.
+    if (!accessKey || accessKey === PLACEHOLDER) {
+      const value = (key) => (data.get(key) || '').toString().trim();
+      const body = [
+        `Name: ${value('name')}`,
+        `Email: ${value('email')}`,
+        value('phone') && `Phone: ${value('phone')}`,
+        value('company') && `Company / Site: ${value('company')}`,
+        service && `Service of interest: ${service}`,
+        '',
+        value('message'),
+      ]
+        .filter(Boolean)
+        .join('\n');
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+        data.get('subject'),
+      )}&body=${encodeURIComponent(body)}`;
+      return;
+    }
+
+    const button = form.querySelector('button[type="submit"]');
+    const original = button ? button.textContent : '';
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Sending…';
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      const result = await response.json();
+      if (result.success) {
+        form.reset();
+        setStatus('Thanks — we have your enquiry and will be in touch within one working day.', true);
+      } else {
+        setStatus(`Sorry, that didn't send. Please email ${email} directly.`, false);
+      }
+    } catch (err) {
+      setStatus(`Could not send right now. Please email ${email} directly.`, false);
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.textContent = original;
+      }
+    }
+  });
+</script>

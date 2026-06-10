@@ -1,4 +1,5 @@
 import type { ImageKey } from './images';
+import type { WorkKey } from './work';
 
 export type ServiceContent = {
   slug: string;
@@ -13,6 +14,8 @@ export type ServiceContent = {
   whereUsed: Array<{ label: string; href: string }>;
   howItWorks: Array<{ title: string; body: string }>;
   faqs: Array<{ q: string; a: string }>;
+  /** Optional before/after gallery — keys into src/data/work.ts. */
+  gallery?: WorkKey[];
   metaTitle: string;
   metaDescription: string;
 };
@@ -28,32 +31,34 @@ export const serviceContent: Record<string, ServiceContent> = {
     slug: 'marble-and-stone-restoration',
     title: 'Marble & Stone Restoration',
     heroEyebrow: 'Service · Restoration',
-    heroHeadline: 'Marble & stone, restored properly.',
+    heroHeadline: 'Marble & Stone, restored to its former glory!',
     heroSubhead:
-      'Diamond grinding, honing and polishing to take scratches, wear patterns and lippage out of marble, limestone, travertine and terrazzo.',
-    heroPromise: 'A clear, even finish on natural stone — without ripping it out.',
+      'Diamond grinding, honing and polishing to remove scratches, wear patterns and lippage from marble, limestone, travertine and terrazzo.',
+    heroPromise: 'A polished, even finish on natural stone — without having to replace it.',
     heroVariant: 'navy',
     heroImageKey: 'serviceMarble',
     whatWeDo: [
       'Diamond grind to remove lippage and deep scratches.',
-      'Hone to a uniform finish across the whole floor.',
-      'Polish to the gloss level you want — matte, satin or high polish.',
-      'Crack and chip repair using colour-matched resins.',
-      'Seal to slow staining and make day-to-day cleaning easier.',
+      'Hone to a uniform finish across the entire floor.',
+      'Polish to the natural sheen of the stone.',
+      'Cracks and chips repaired using colour-matched resins.',
+      'Sealed to prevent staining and make day-to-day cleaning easier.',
     ],
     whereUsed: [sectorChips.commercial, sectorChips.hospital, sectorChips.domestic],
     howItWorks: [
-      { title: 'Survey', body: 'On-site assessment — stone type, current condition, wear pattern, access notes.' },
-      { title: 'Grind', body: 'Coarse to fine diamonds, low-dust extraction. Lippage and major scratches come out here.' },
-      { title: 'Hone & polish', body: 'Progressive finer grits to the agreed finish, edges done by hand.' },
-      { title: 'Seal & hand back', body: 'Impregnating sealer and a written care guide so the finish lasts.' },
+      { title: 'Survey', body: 'On-site assessment — stone type, current condition, wear pattern, access and agreed notes.' },
+      { title: 'Grind or deep clean', body: 'Coarse to fine diamonds, low-dust extraction — lippage and major scratches come out here. Or, for a deep clean, deep chemical cleaning.' },
+      { title: 'Hone & polish', body: 'Progressively finer grit pads until the agreed finish is achieved, edges done by hand. Or, after a cleansing chemical strip, high-speed polishing pads.' },
+      { title: 'Seal & polish', body: 'Impregnating sealer (on certain stone) or high-speed polish, with an aftercare guide so the finish lasts.' },
     ],
     faqs: [
-      { q: 'How long does it take?', a: 'A typical lobby or function room is 1–3 days, including hand-back. Larger jobs are programmed around your trading hours.' },
-      { q: 'Do you need to close the area?', a: 'We isolate the work zone, but most jobs are done out of hours or weekends so the rest of the building stays open.' },
-      { q: 'Will it look different?', a: 'You agree the gloss level up front — matte, satin or high polish. The stone\'s own colour and veining come back out.' },
-      { q: 'How long does the finish last?', a: 'Years, in normal use. We send a care guide so cleaning routines don\'t wear it back down.' },
+      { q: 'How long does it take?', a: 'A typical lobby or function room is 1–3 days. Larger jobs are determined by the access available to us.' },
+      { q: 'Do you need to close the area?', a: 'We isolate the work zone. If out-of-hours work is needed so the rest of the business stays open, we can come to an arrangement.' },
+      { q: 'Will it look different?', a: 'In short, yes — the stone\'s own colour, veining and natural texture become more prominent.' },
+      { q: 'How long does the finish last?', a: 'Years, in normal use. We supply a care guide so cleaning routines maintain the just-polished look.' },
+      { q: 'Is there a payment plan arrangement?', a: 'Yes — we offer scheduled term payments to our regular business partners.' },
     ],
+    gallery: ['marbleBathroom', 'marbleHallway', 'churchFlagstone', 'limestoneFlagstone', 'slateFloor', 'commercialLobby'],
     metaTitle: 'Marble & Stone Restoration in Ireland | SaniSafe Solutions',
     metaDescription:
       'Marble, limestone, travertine and terrazzo restoration across Ireland — diamond grind, hone, polish and seal. Insurer-friendly documentation. Based in Ennis.',
@@ -66,7 +71,7 @@ export const serviceContent: Record<string, ServiceContent> = {
     heroHeadline: 'Hardwood floors brought back to life.',
     heroSubhead:
       'Sand, repair and re-finish solid and engineered wood floors with dust-extracted equipment so the rest of the space stays usable.',
-    heroPromise: 'A clean, even hardwood finish without tearing out the floor.',
+    heroPromise: 'A clean, even hardwood finish without replacing the floor.',
     heroVariant: 'navy',
     heroImageKey: 'serviceWood',
     whatWeDo: [
@@ -78,125 +83,169 @@ export const serviceContent: Record<string, ServiceContent> = {
     ],
     whereUsed: [sectorChips.commercial, sectorChips.domestic],
     howItWorks: [
-      { title: 'Inspect', body: 'Confirm species, thickness, existing finish and whether repairs are needed.' },
-      { title: 'Repair & sand', body: 'Fix problem boards, then sand with dust extraction through three grits.' },
-      { title: 'Finish', body: 'Hard-wax oil or lacquer, two or three coats with light de-nibbing.' },
-      { title: 'Hand back', body: 'Care guide and a touch-up kit for high-traffic edges.' },
+      { title: 'Inspect', body: 'Confirm treatment type, thickness, existing finish and what repairs are required.' },
+      { title: 'Treatment type', body: 'Sanding: fix problem boards, then sand with dust extraction through three grits. Or chemical peel: strip the existing surface and re-seal.' },
+      { title: 'Finish', body: 'Hardwood-wax, oil or lacquer — two or three coats.' },
+      { title: 'Hand over', body: 'Care guide and cleaning recommendations.' },
     ],
     faqs: [
       { q: 'How long does it take?', a: 'A typical room is 1–2 days. Open-plan spaces depend on access and drying time between coats.' },
       { q: 'Do I need to move out?', a: 'Usually no — the area itself has to be empty and ventilated, but the rest of the house or building stays in use.' },
       { q: 'Is the dust a problem?', a: 'We use HEPA-extracted sanders. There is residual dust but nothing like a traditional sand.' },
-      { q: 'How long does the finish last?', a: '7–10 years in a domestic setting before a re-coat; sooner on a commercial floor.' },
+      { q: 'How long does the finish last?', a: '7–10 years in a domestic setting before a re-coat; sooner on a commercial floor due to higher traffic.' },
+      { q: 'Is there a payment plan arrangement?', a: 'Yes — we offer scheduled term payments to our regular business partners.' },
     ],
+    gallery: ['oakRestoration', 'oakLivingRoom', 'pubFloor', 'pineHallway'],
     metaTitle: 'Wooden Floor Restoration in Ireland | SaniSafe Solutions',
     metaDescription:
       'Sanding, repair and re-finishing of solid and engineered wood floors across Ireland. Dust-extracted equipment. Hard-wax oil and lacquer options.',
   },
 
-  'polished-concrete': {
-    slug: 'polished-concrete',
-    title: 'Polished Concrete',
+  'travertine': {
+    slug: 'travertine',
+    title: 'Travertine Restoration',
     heroEyebrow: 'Service · Restoration',
-    heroHeadline: 'Mechanically polished concrete that lasts.',
+    heroHeadline: 'Travertine, restored to a smooth, even finish.',
     heroSubhead:
-      'A multi-stage diamond grind and densify process that turns existing concrete into a hard, low-maintenance, low-dust floor.',
-    heroPromise: 'A durable polished concrete floor without pouring new slab.',
+      'Diamond grinding, resin hole-filling, honing and polishing to take wear, etching and lippage out of travertine floors.',
+    heroPromise: 'A smooth, even travertine finish — without replacing the floor.',
     heroVariant: 'navy',
-    heroImageKey: 'serviceConcrete',
+    heroImageKey: 'serviceTravertine',
     whatWeDo: [
-      'Diamond grind to expose the aggregate level you choose.',
-      'Chemical densifier to harden the surface.',
-      'Progressive polish to the gloss level you want.',
-      'Crack and joint repair where movement allows.',
-      'Penetrating sealer for stain resistance.',
+      'Diamond grind to remove lippage, wear and surface damage.',
+      'Fill open holes and pitting with colour-matched resin.',
+      'Hone to a uniform finish across the entire floor.',
+      'Polish to the natural sheen of the stone.',
+      'Seal to slow staining and make day-to-day cleaning easier.',
     ],
-    whereUsed: [sectorChips.commercial, sectorChips.domestic],
+    whereUsed: [sectorChips.commercial, sectorChips.hospital, sectorChips.domestic],
     howItWorks: [
-      { title: 'Test patch', body: 'A 1m² test patch to confirm aggregate exposure and gloss level.' },
-      { title: 'Grind', body: 'Heavy planetary grinders with vacuum extraction.' },
-      { title: 'Densify & polish', body: 'Lithium densifier and progressive resin diamonds.' },
-      { title: 'Seal', body: 'Penetrating sealer and a written care guide.' },
+      { title: 'Survey', body: 'On-site assessment — condition, level of holing, wear pattern, access and agreed notes.' },
+      { title: 'Grind & fill', body: 'Coarse to fine diamonds with low-dust extraction, then fill open holes and pitting with colour-matched resin.' },
+      { title: 'Hone & polish', body: 'Progressively finer grit pads until the agreed finish is achieved, edges done by hand.' },
+      { title: 'Seal & hand back', body: 'Impregnating sealer and an aftercare guide so the finish lasts.' },
     ],
     faqs: [
-      { q: 'How long does it take?', a: '3–7 days for a medium-sized commercial floor, depending on aggregate exposure and finish level.' },
-      { q: 'Is it slippery when wet?', a: 'A polished concrete floor on its own can be slick when wet. We can apply an anti-slip treatment that does not change the look.' },
-      { q: 'Can you fix existing cracks?', a: 'Static cracks are repairable with epoxy. Live cracks (moving with the slab) need to be respected, not hidden.' },
-      { q: 'How long does it last?', a: 'Decades on a sound slab, with periodic re-polish on the wear lanes.' },
+      { q: 'How long does it take?', a: 'A typical room or lobby is 1–3 days. Larger jobs are determined by the access available to us.' },
+      { q: 'Do you fill the holes?', a: 'Yes — open holes and pitting are filled with colour-matched resin as part of the restoration, then honed flat.' },
+      { q: 'Will it look different?', a: 'In short, yes — the stone\'s own colour and natural texture become more prominent, with the finish (matte, satin or polished) agreed up front.' },
+      { q: 'How long does the finish last?', a: 'Years, in normal use. We supply a care guide so cleaning routines maintain the finish.' },
+      { q: 'Is there a payment plan arrangement?', a: 'Yes — we offer scheduled term payments to our regular business partners.' },
     ],
-    metaTitle: 'Polished Concrete Floor Restoration in Ireland | SaniSafe Solutions',
+    gallery: ['marbleHallway', 'limestoneFlagstone', 'slateFloor'],
+    metaTitle: 'Travertine Floor Restoration in Ireland | SaniSafe Solutions',
     metaDescription:
-      'Polished concrete floor restoration across Ireland — diamond grind, densify, polish and seal. Durable, low-maintenance and low-dust.',
+      'Travertine restoration across Ireland — diamond grind, resin hole-filling, hone, polish and seal. Restored in place, without replacing the floor. Based in Ennis.',
+  },
+
+  'marmoleum': {
+    slug: 'marmoleum',
+    title: 'Marmoleum Floor Restoration',
+    heroEyebrow: 'Service · Restoration',
+    heroHeadline: 'Marmoleum and linoleum floors, brought back to life.',
+    heroSubhead:
+      'Strip back tired dressings, deep clean and re-polish marmoleum and linoleum floors to a fresh, even sheen — common in schools, healthcare and commercial settings.',
+    heroPromise: 'A fresh, even marmoleum finish without replacing the floor.',
+    heroVariant: 'navy',
+    heroImageKey: 'serviceMarmoleum',
+    whatWeDo: [
+      'Strip old, worn polish and dressings back to a clean surface.',
+      'Deep clean to lift ingrained dirt and scuffing.',
+      'Re-seal and polish with a hard-wearing floor dressing.',
+      'Restore colour and sheen without replacing the floor.',
+      'Anti-slip options where slip resistance is a concern.',
+    ],
+    whereUsed: [sectorChips.hospital, sectorChips.commercial, sectorChips.domestic],
+    howItWorks: [
+      { title: 'Survey', body: 'Confirm the floor type, condition and the finish you want.' },
+      { title: 'Strip & clean', body: 'Remove old dressings and deep clean the surface.' },
+      { title: 'Seal & polish', body: 'Apply a hard-wearing dressing and buff to an even sheen.' },
+      { title: 'Hand over', body: 'Care guide and cleaning recommendations so the finish lasts.' },
+    ],
+    faqs: [
+      { q: 'How long does it take?', a: 'A typical room is 1–2 days, depending on the number of coats and drying time between them.' },
+      { q: 'Do I need to close the area?', a: 'Just the work zone, and it needs to stay clear while coats dry. Out-of-hours work is available if needed.' },
+      { q: 'Can you make it less slippery?', a: 'Yes — we can finish with a more slip-resistant dressing or apply an anti-slip treatment where needed.' },
+      { q: 'How long does the finish last?', a: 'It depends on traffic and cleaning regime. A good maintenance routine keeps the sheen for longer; we provide a care guide.' },
+      { q: 'Is there a payment plan arrangement?', a: 'Yes — we offer scheduled term payments to our regular business partners.' },
+    ],
+    gallery: ['yellowSchoolFloor', 'blueSchoolFloor', 'redSafetyFloor'],
+    metaTitle: 'Marmoleum & Linoleum Floor Restoration in Ireland | SaniSafe Solutions',
+    metaDescription:
+      'Marmoleum and linoleum floor restoration across Ireland — strip, deep clean, re-seal and polish. Common in schools, healthcare and commercial settings. Based in Ennis.',
   },
 
   'anti-slip-treatments': {
     slug: 'anti-slip-treatments',
     title: 'Anti-Slip Treatments',
     heroEyebrow: 'Service · Safety',
-    heroHeadline: 'Invisible anti-slip treatment for wet floors.',
+    heroHeadline: 'Anti-Slip Treatment.',
     heroSubhead:
-      'A chemical treatment that micro-etches the floor to raise slip resistance without changing how the floor looks.',
+      'A chemical treatment that micro-etches the floor to raise slip-resistance traction without changing how the floor appears.',
     heroPromise: 'Higher slip resistance on wet floors — without changing the look.',
     heroVariant: 'navy',
     heroImageKey: 'serviceAntiSlip',
     whatWeDo: [
       'Pendulum reading before treatment.',
       'Targeted chemical treatment matched to the floor type.',
-      'Pendulum re-test once the treatment has cured.',
-      'Photographic record and written report you can keep on file.',
-      'Care guidance so cleaning routines don\'t reverse the effect.',
+      'Pendulum re-test once the treatment has been completed.',
+      'Written record and report you can keep on file.',
+      'Care guidance to ensure continued safety.',
     ],
     whereUsed: [sectorChips.hospital, sectorChips.commercial, sectorChips.domestic],
     howItWorks: [
-      { title: 'Test', body: 'Pendulum reading on the floor in its current state, wet and dry.' },
-      { title: 'Treat', body: 'Apply the right chemistry for tile, stone, concrete or porcelain.' },
+      { title: 'Test & agree works', body: 'Establish the risk level on the floor in wet and dry conditions.' },
+      { title: 'Treatment', body: 'Apply the right product for tile, stone, concrete or porcelain.' },
       { title: 'Cure & rinse', body: 'Allow to react, then neutralise and rinse.' },
       { title: 'Re-test & report', body: 'Pendulum re-test and a written before/after report.' },
     ],
     faqs: [
-      { q: 'Will it change how the floor looks?', a: 'No. The treatment works at a microscopic level. The floor looks identical when it\'s dry.' },
-      { q: 'How long does it take?', a: 'A typical entrance lobby or pool surround is done in a few hours. The floor is back in use the same day.' },
-      { q: 'How long does it last?', a: '2–5 years depending on traffic and cleaning regime. We can re-test on request.' },
-      { q: 'Does it need to close the area?', a: 'Just the work zone. We can do this out of hours.' },
+      { q: 'Will it change how the floor looks?', a: 'No. The treatment works at a microscopic level. The floor looks the same (only cleaner) as it did before — it simply has a textured feel that prevents slips and falls.' },
+      { q: 'How long does it take?', a: 'A typical entrance lobby or bathroom can be done in a few hours to a day. A pool deck is done in one to two days.' },
+      { q: 'How long does it last?', a: 'If chemical etching is carried out it will last indefinitely. If a clear surface coating is used, 2–5 years depending on traffic and cleaning regime. We can re-test on request.' },
+      { q: 'Does it need to close the area?', a: 'Just the work zone. We can also do this out of hours if required.' },
+      { q: 'Is there a payment plan arrangement?', a: 'Yes — we offer scheduled term payments to our regular business partners.' },
     ],
     metaTitle: 'Anti-Slip Treatments Ireland | SaniSafe Solutions',
     metaDescription:
       'Invisible chemical anti-slip treatments for tiles, stone, concrete and porcelain. Pendulum tested before and after. Nationwide service from Ennis.',
   },
 
-  'etching-and-graphics': {
-    slug: 'etching-and-graphics',
-    title: 'Etching & Graphics',
-    heroEyebrow: 'Service · Specialist',
-    heroHeadline: 'Permanent floor graphics that stay safe underfoot.',
+  'deep-cleaning': {
+    slug: 'deep-cleaning',
+    title: 'Deep Clean & Stain Removal',
+    heroEyebrow: 'Service · Cleaning',
+    heroHeadline: 'Deep cleaning and stain removal that brings floors back.',
     heroSubhead:
-      'Etched lane markings, depth markers, hazard zones and logos for swimming pools, leisure centres and schools.',
-    heroPromise: 'Floor graphics that don\'t peel — and don\'t reduce slip resistance.',
+      'Specialist deep cleaning for marble, tile, stone, wood, concrete and marmoleum — lifting ingrained dirt, limescale and stains that everyday cleaning leaves behind.',
+    heroPromise: 'A deep clean that restores the look without a full restoration.',
     heroVariant: 'navy',
-    heroImageKey: 'serviceEtching',
+    heroImageKey: 'serviceDeepClean',
     whatWeDo: [
-      'Pool lane markers, depth markers and warning zones.',
-      'Wayfinding and brand graphics on hard floors.',
-      'Hazard demarcation for warehouses and workshops.',
-      'Done with anti-slip aware chemistry — no slippy patches.',
-      'Permanent, abrasion-resistant — they wear with the floor, not on top of it.',
+      'Deep clean of tile, stone, wood, concrete and marmoleum floors.',
+      'Limescale, grime and ingrained-dirt removal from grout and surfaces.',
+      'Stain treatment matched to the floor type and the stain.',
+      'Strip and re-seal where a protective finish has broken down.',
+      'Care guidance so the floor stays cleaner for longer.',
     ],
-    whereUsed: [sectorChips.commercial, sectorChips.hospital],
+    whereUsed: [sectorChips.commercial, sectorChips.hospital, sectorChips.domestic],
     howItWorks: [
-      { title: 'Design', body: 'Confirm graphics, sizes and positions. Approval drawing.' },
-      { title: 'Mask', body: 'Precision masking on the floor surface.' },
-      { title: 'Etch', body: 'Controlled chemical etch — no thermal damage.' },
-      { title: 'Clean & verify', body: 'Wash off, photograph, hand over.' },
+      { title: 'Survey', body: 'Identify the floor type, the soiling and any staining, then agree the method.' },
+      { title: 'Deep clean', body: 'Mechanical and chemical cleaning matched to the surface — no damage to the floor.' },
+      { title: 'Treat stains', body: 'Targeted stain and limescale removal on the problem areas.' },
+      { title: 'Seal & hand back', body: 'Re-seal where needed and a written care guide so it lasts.' },
     ],
     faqs: [
-      { q: 'Will it make the floor slipperier?', a: 'No. We use chemistry that respects the existing anti-slip profile of the floor.' },
-      { q: 'How long does it last?', a: 'Permanent — it\'s part of the floor surface, not a sticker.' },
-      { q: 'Can you match a brand colour?', a: 'Where the substrate allows, yes. We agree the test panel before commencing.' },
-      { q: 'Do you need to drain the pool?', a: 'For pool-side graphics, yes — we work with your maintenance window.' },
+      { q: 'How long does it take?', a: 'This depends on the floor type and size. A typical domestic room is usually 1–2 days; commercial spaces depend on access and drying time between coats.' },
+      { q: 'Do I need to move out or close my business?', a: 'Usually not — the area itself has to be empty and ventilated, but the rest of the house or building should stay in use. Out-of-hours work is available if needed.' },
+      { q: 'Are the dust or smells an issue?', a: 'We minimise both. Some cleaning chemicals can have an odour, but with proper ventilation this is kept to a minimum.' },
+      { q: 'Will it remove every stain?', a: 'Most surface and ingrained staining lifts with the right method. Deep, set-in stains on porous stone can sometimes only be reduced — we tell you honestly before we start.' },
+      { q: 'Is there a payment plan arrangement?', a: 'Yes — we offer scheduled term payments to our regular business partners.' },
     ],
-    metaTitle: 'Etched Floor Graphics & Lane Markings Ireland | SaniSafe Solutions',
+    gallery: ['slateFloor', 'limestoneFlagstone', 'marbleBathroom', 'churchFlagstone'],
+    metaTitle: 'Deep Clean & Stain Removal for Floors in Ireland | SaniSafe Solutions',
     metaDescription:
-      'Permanent etched floor graphics — pool markers, hazard zones, wayfinding and brand graphics — for leisure centres, schools and commercial sites in Ireland.',
+      'Specialist deep cleaning and stain removal for marble, tile, stone, wood, concrete and marmoleum floors across Ireland. Based in Ennis, nationwide service.',
   },
 
   'sliptest': {
@@ -215,7 +264,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       'PTV readings recorded per zone.',
       'Photographic record of test positions and conditions.',
       'Written report referencing HSA guidance.',
-      'Recommendations for treatment where readings sit below the safe threshold.',
+      'Recommendations for treatment where readings sit below the safety threshold.',
     ],
     whereUsed: [sectorChips.hospital, sectorChips.commercial, sectorChips.domestic],
     howItWorks: [
@@ -226,9 +275,9 @@ export const serviceContent: Record<string, ServiceContent> = {
     ],
     faqs: [
       { q: 'What is the pendulum test?', a: 'A standardised swing test that simulates a heel strike on the floor. The pendulum value (PTV) tells you, in numbers, how slip-resistant the floor is.' },
-      { q: 'Is this what insurers want?', a: 'Yes. Pendulum (PTV) is the recognised method in HSA and UK HSE guidance, and it produces a number that is defensible in court.' },
-      { q: 'How long does a test take?', a: 'A typical site is half a day, including report-time on the day.' },
-      { q: 'What if we fail?', a: 'We treat the floor and re-test under the same conditions. Treatment is invisible.' },
+      { q: 'Is this what insurers require?', a: 'Yes. Pendulum (PTV) is the recognised method in HSA and UK HSE guidance, and it produces a number that is defendable in court.' },
+      { q: 'How long does a test take?', a: 'A typical site visit is half a day; the report follows.' },
+      { q: 'What if we fail?', a: 'We can recommend treatments for the floor and re-test under the same conditions once remedial works have been completed.' },
     ],
     metaTitle: 'SlipTest — Pendulum Slip Testing & Insurance Reports Ireland',
     metaDescription:

@@ -6,8 +6,21 @@ import StatBand from '../components/StatBand.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import Testimonial from '../components/Testimonial.astro';
 import CTA from '../components/CTA.astro';
+import BeforeAfterGallery from '../components/BeforeAfterGallery.astro';
 import { services, sectors, site } from '../data/site';
 import { images } from '../data/images';
+import { pickWork, partners } from '../data/work';
+
+const homeWork = pickWork([
+  'redSafetyFloor',
+  'marbleHallway',
+  'oakRestoration',
+  'churchFlagstone',
+  'spaPoolside',
+  'commercialLobby',
+  'blueSchoolFloor',
+  'pubFloor',
+]);
 
 const homeJsonLd = [
   JSON.stringify({
@@ -34,45 +47,52 @@ const homeJsonLd = [
 const slipTest = services.find((s) => s.slug === 'sliptest')!;
 const otherServices = services.filter((s) => s.slug !== 'sliptest');
 const processSteps = [
-  { n: '01', title: 'Survey & slip test', body: 'On-site visit. Pendulum readings, photographs, condition assessment.' },
-  { n: '02', title: 'Quote', body: 'Fixed-price quote within 24 hours, with scope, timing and access notes.' },
-  { n: '03', title: 'Restoration / treatment', body: 'Programmed works, dust-extracted equipment, minimal disruption.' },
-  { n: '04', title: 'Aftercare & re-test', body: 'Care guidance and a follow-up pendulum test where slip resistance was the issue.' },
+  { n: '01', title: 'Survey & agreed treatment', body: 'On-site visit. Pendulum readings, photographs, condition assessment.' },
+  { n: '02', title: 'Quote', body: 'Fixed-price quote, with scope, timing and access notes.' },
+  { n: '03', title: 'Restoration / treatment', body: 'Agreed programme of works carried out with minimal disruption.' },
+  { n: '04', title: 'Aftercare', body: 'Care, training and guidance provided, and a follow-up pendulum test where slip resistance was an issue.' },
 ];
 
 const testimonials = [
   {
     quote:
-      'Their pendulum report gave us the audit paperwork we needed. The anti-slip treatment passed re-test the same day.',
+      'SaniSafe removed limescale build-up on our pool deck that no other company before them could. Their aftercare has kept the facility like new ever since.',
     name: 'Facilities Manager',
-    role: 'Acute hospital, Munster',
+    role: 'Fitzgerald Woodlands House Hotel, Adare, Co. Limerick',
   },
   {
     quote:
-      'Marble lobby restored over a weekend. Guests walked back in on Monday and the floor looked brand new.',
-    name: 'Operations Director',
-    role: '4-star hotel, west of Ireland',
+      'Oak bar floor restored overnight. Guests commented that the floor looked brand new.',
+    name: 'Operations Manager',
+    role: 'Westport Woods Hotel, Co. Mayo',
   },
   {
     quote:
-      'Honest, tidy work. They told us where the floor was at risk and what to do about it — no upsell.',
-    name: 'Homeowner',
-    role: 'Co. Clare',
+      'The SaniSafe lads transformed our pool deck back to its former glory and ensured our customers are safe with their anti-slip treatment.',
+    name: 'Leisure Centre Manager',
+    role: 'The Nuremore Hotel, Co. Monaghan',
+  },
+  {
+    quote:
+      'My floors are like new! We were about to replace our marble floor because we simply couldn\'t get it as clean as it was. SaniSafe saved us a lot of money and transformed the look of my home.',
+    name: 'Amy Kelly',
+    role: 'Homeowner, Lahinch, Co. Clare',
   },
 ];
 ---
 
 <Layout
   title="SaniSafe Solutions — Floor Restoration, Anti-Slip & Pendulum Slip Testing | Ireland"
-  description="Marble, wood and polished concrete restoration plus anti-slip treatments, etching and pendulum slip testing for hospitals, commercial spaces and homes. SaniSafe Solutions — Ennis, working nationwide."
+  description="Marble, wood and travertine restoration plus anti-slip treatments, deep cleaning and pendulum slip testing for hospitals, commercial spaces and homes. SaniSafe Solutions — Ennis, working nationwide."
   jsonLd={homeJsonLd}
 >
   {/* ---------- HERO ---------- */}
   <Hero
     headline="Restored floors. Safe surfaces. Insurer-ready reports."
-    subhead="Restoration of marble, wood and polished concrete. Anti-slip treatments, etching and pendulum slip testing for hospitals, commercial spaces and homes. Based in Ennis. Working across Ireland."
+    subhead="Whether you want a full restoration or simply a deep clean of your marble, wood, tile, stone, travertine or marmoleum floor, SaniSafe have you covered. We provide anti-slip treatments and pendulum slip-resistance testing for hospitals, hotels, commercial spaces, leisure centres and homes. Based in Ennis — working nationwide."
     eyebrow="Floor restoration & slip safety · Ennis, Co. Clare"
     variant="navy"
+    imageKey="heroHome"
     eager
   >
     <a slot="ctas" href="/contact" class="btn-primary">Request a free quote</a>
@@ -83,24 +103,14 @@ const testimonials = [
     </p>
   </Hero>
 
-  {/* ---------- STAT BAND ---------- */}
-  <StatBand
-    number="95%"
-    caption="of major slips result in broken bones"
-    attribution="HSE (UK) estimate, 2025"
-    body="SaniSafe Solutions carries out pendulum slip-resistance testing under our SlipTest service so your floors don't pose a safety risk."
-    ctaHref="/services/sliptest"
-    ctaLabel="Learn about SlipTest"
-  />
-
   {/* ---------- SERVICES GRID ---------- */}
   <Section variant="white" id="services">
     <div class="max-w-2xl">
       <p class="eyebrow">What we do</p>
-      <h2 class="h-section mt-3">Restoration and slip safety, under one roof.</h2>
+      <h2 class="h-section mt-3">Restoration, deep cleaning and slip safety, under one roof.</h2>
       <p class="lead mt-4">
-        Six services that cover the lifecycle of a hard floor — from a deep restoration of marble, wood and polished
-        concrete through to anti-slip treatments, etched graphics and pendulum slip testing.
+        Seven services that cover the lifecycle of your floor — from a deep restoration of marble, wood and
+        travertine through to anti-slip treatments, deep cleaning and pendulum slip testing.
       </p>
     </div>
 
@@ -121,10 +131,10 @@ const testimonials = [
   <Section variant="offwhite" id="sectors">
     <div class="max-w-2xl">
       <p class="eyebrow">Sectors we serve</p>
-      <h2 class="h-section mt-3">Different floors. Same standard.</h2>
+      <h2 class="h-section mt-3">Different floors. Same standards.</h2>
       <p class="lead mt-4">
-        We work to the same documented standard across hospitals, commercial sites and homes — but the priorities
-        change with the brief.
+        We work to the same high standard across hospitals, commercial sites and homes — the priorities may change
+        with the brief, but the results stay the same.
       </p>
     </div>
 
@@ -157,51 +167,23 @@ const testimonials = [
     </div>
   </Section>
 
-  {/* ---------- SLIPTEST EXPLAINER ---------- */}
-  <Section variant="white" id="sliptest-explainer">
-    <div class="grid gap-10 lg:grid-cols-12 items-center">
-      <div class="lg:col-span-7">
-        <div class="flex items-center gap-4">
-          <img
-            src={site.subBrand.logo}
-            alt="SlipTest — Confidence in every step"
-            width="80"
-            height="80"
-            loading="lazy"
-            class="h-16 w-16 sm:h-20 sm:w-20 object-contain bg-white rounded-md"
-          />
-          <div>
-            <p class="eyebrow">SlipTest by SaniSafe Solutions</p>
-            <h2 class="h-section mt-1">Pendulum slip testing, written reports, treatment if needed.</h2>
-          </div>
-        </div>
-        <p class="lead mt-5">
-          SlipTest is our pendulum slip-resistance testing service. It gives you a defensible, documented
-          slip-resistance reading you can hand to an insurer, an auditor or a court.
-        </p>
-        <ul class="mt-6 grid gap-3 text-base text-ink-charcoal">
-          <li class="flex gap-3"><span aria-hidden="true" class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-yellow"></span>Pendulum (PTV) testing to HSA guidance.</li>
-          <li class="flex gap-3"><span aria-hidden="true" class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-yellow"></span>Written report suitable for insurers and audits.</li>
-          <li class="flex gap-3"><span aria-hidden="true" class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-yellow"></span>Treatment available if PTV is below threshold.</li>
-        </ul>
-        <a href="/services/sliptest" class="btn-yellow mt-7">Learn about SlipTest</a>
-      </div>
+  {/* ---------- RECENT WORK (BEFORE / AFTER) ---------- */}
+  <Section variant="white" id="work">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Recent work</p>
+      <h2 class="h-section mt-3">Before and after, on real floors.</h2>
+      <p class="lead mt-4">
+        Marble, natural stone, hardwood and safety flooring across hospitals, schools, leisure centres, bars and
+        homes — restored in place, out of hours, without ripping the floor out.
+      </p>
+    </div>
 
-      <div class="lg:col-span-5">
-        <div class="rounded-2xl bg-black text-white p-8 shadow-card relative overflow-hidden">
-          <svg aria-hidden="true" viewBox="0 0 200 200" class="absolute -right-6 -top-6 h-44 w-44 text-white/15">
-            <g fill="none" stroke="currentColor" stroke-width="6">
-              <line x1="100" y1="20" x2="100" y2="60" />
-              <circle cx="100" cy="80" r="20" />
-              <line x1="100" y1="100" x2="40" y2="180" />
-              <line x1="40" y1="180" x2="160" y2="180" />
-            </g>
-          </svg>
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-yellow">Confidence in every step</p>
-          <p class="mt-3 font-display font-extrabold text-2xl">Pendulum Slip Testing & Full Insurance Report Service.</p>
-          <p class="mt-3 text-white/80">One contractor closes the loop — we test, we treat, we re-test.</p>
-        </div>
-      </div>
+    <div class="mt-10">
+      <BeforeAfterGallery items={homeWork} />
+    </div>
+
+    <div class="mt-10">
+      <a href="/contact" class="btn-primary">Request a free quote</a>
     </div>
   </Section>
 
@@ -227,13 +209,90 @@ const testimonials = [
   <Section variant="offwhite" id="testimonials">
     <div class="max-w-2xl">
       <p class="eyebrow">What our clients say</p>
-      <h2 class="h-section mt-3">Quiet jobs, well done.</h2>
+      <h2 class="h-section mt-3">Excellent work and fantastic aftercare.</h2>
     </div>
 
-    <div class="mt-10 grid gap-6 md:grid-cols-3">
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
       {testimonials.map((t) => (
         <Testimonial quote={t.quote} name={t.name} role={t.role} />
       ))}
+    </div>
+
+    {/* ---------- TRUSTED BY ---------- */}
+    <div class="mt-14 border-t border-surface-grey pt-10">
+      <p class="text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-slate">
+        Trusted by clients across Ireland
+      </p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+        {partners.map((p) => (
+          <img
+            src={p.logo}
+            alt={`${p.name} — SaniSafe Solutions client`}
+            width="96"
+            height="96"
+            loading="lazy"
+            class="h-20 w-20 rounded-full object-contain"
+          />
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  {/* ---------- STAT BAND ---------- */}
+  <StatBand
+    number="95%"
+    caption="of major slips and falls result in broken bones"
+    attribution="HSE (UK) estimate, 2025"
+    body="SaniSafe Solutions carries out pendulum slip-resistance testing under our SlipTest service so your floors don't pose a safety risk."
+    ctaHref="/services/sliptest"
+    ctaLabel="Learn about SlipTest"
+  />
+
+  {/* ---------- SLIPTEST EXPLAINER ---------- */}
+  <Section variant="white" id="sliptest-explainer">
+    <div class="grid gap-10 lg:grid-cols-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="flex items-center gap-4">
+          <img
+            src={site.subBrand.logo}
+            alt="SlipTest — Confidence in every step"
+            width="80"
+            height="80"
+            loading="lazy"
+            class="h-16 w-16 sm:h-20 sm:w-20 object-contain bg-white rounded-md"
+          />
+          <div>
+            <p class="eyebrow">SlipTest by SaniSafe Solutions</p>
+            <h2 class="h-section mt-1">Pendulum slip testing, written reports, treatment if needed.</h2>
+          </div>
+        </div>
+        <p class="lead mt-5">
+          SlipTest is our pendulum slip-resistance testing service. It gives you a defensible, documented
+          slip-resistance reading you can hand to an insurer, an auditor or a court.
+        </p>
+        <ul class="mt-6 grid gap-3 text-base text-ink-charcoal">
+          <li class="flex gap-3"><span aria-hidden="true" class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-yellow"></span>Pendulum (PTV) testing to HSA guidance.</li>
+          <li class="flex gap-3"><span aria-hidden="true" class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-yellow"></span>Written report suitable for insurers, auditors and solicitors.</li>
+          <li class="flex gap-3"><span aria-hidden="true" class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-yellow"></span>Treatment available if PTV is below the recommended threshold.</li>
+        </ul>
+        <a href="/services/sliptest" class="btn-yellow mt-7">Learn about SlipTest</a>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="rounded-2xl bg-black text-white p-8 shadow-card relative overflow-hidden">
+          <svg aria-hidden="true" viewBox="0 0 200 200" class="absolute -right-6 -top-6 h-44 w-44 text-white/15">
+            <g fill="none" stroke="currentColor" stroke-width="6">
+              <line x1="100" y1="20" x2="100" y2="60" />
+              <circle cx="100" cy="80" r="20" />
+              <line x1="100" y1="100" x2="40" y2="180" />
+              <line x1="40" y1="180" x2="160" y2="180" />
+            </g>
+          </svg>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-yellow">Confidence in every step</p>
+          <p class="mt-3 font-display font-extrabold text-2xl">Pendulum Slip Testing & Full Insurance Report Service.</p>
+          <p class="mt-3 text-white/80">One contractor closes the loop — we test, we treat, we re-test.</p>
+        </div>
+      </div>
     </div>
   </Section>
 

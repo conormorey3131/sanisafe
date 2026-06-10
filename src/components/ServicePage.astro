@@ -3,12 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Section from './Section.astro';
 import Hero from './Hero.astro';
 import CTA from './CTA.astro';
+import BeforeAfterGallery from './BeforeAfterGallery.astro';
 import type { ServiceContent } from '../data/serviceContent';
+import { pickWork } from '../data/work';
 
 export interface Props {
   content: ServiceContent;
 }
 const { content } = Astro.props;
+const gallery = content.gallery ? pickWork(content.gallery) : [];
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -39,7 +42,6 @@ const faqLd = JSON.stringify({
     imageKey={content.heroImageKey}
   >
     <a slot="ctas" href="/contact" class="btn-primary">Request a quote</a>
-    <a slot="ctas" href="/services/sliptest" class="btn-secondary">Pendulum slip test</a>
   </Hero>
 
   {/* What we do */}
@@ -89,6 +91,20 @@ const faqLd = JSON.stringify({
       ))}
     </ol>
   </Section>
+
+  {/* Before / after */}
+  {gallery.length > 0 && (
+    <Section variant="offwhite">
+      <div class="max-w-2xl">
+        <p class="eyebrow">Recent work</p>
+        <h2 class="h-section mt-3">Before and after.</h2>
+        <p class="lead mt-4">A few jobs of this type, shown exactly as they were handed back.</p>
+      </div>
+      <div class="mt-10">
+        <BeforeAfterGallery items={gallery} />
+      </div>
+    </Section>
+  )}
 
   {/* FAQ */}
   <Section variant="white">

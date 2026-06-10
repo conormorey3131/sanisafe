@@ -4,13 +4,11 @@ import Section from '../components/Section.astro';
 import Hero from '../components/Hero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { site } from '../data/site';
-
-const sent = Astro.url.searchParams.get('sent') === 'true';
 ---
 
 <Layout
-  title="Contact SaniSafe Solutions — Quotes within 24 hours | Ireland"
-  description="Get in touch with SaniSafe Solutions for floor restoration, anti-slip treatments and pendulum slip testing. Based in Ennis, working nationwide. Quotes within 24 hours."
+  title="Contact SaniSafe Solutions — Floor Restoration & Slip Safety | Ireland"
+  description="Get in touch with SaniSafe Solutions for floor restoration, anti-slip treatments and pendulum slip testing. Based in Ennis, Co. Clare, working nationwide."
 >
   <Hero
     eyebrow="Get in touch"
@@ -26,14 +24,8 @@ const sent = Astro.url.searchParams.get('sent') === 'true';
   <Section variant="white">
     <div class="grid gap-10 lg:grid-cols-12">
       <div class="lg:col-span-7">
-        {sent && (
-          <div role="status" class="mb-6 rounded-md border border-brand-green/40 bg-brand-green/10 px-4 py-3 text-brand-navy">
-            <p class="font-semibold">Thanks — we have your enquiry.</p>
-            <p class="text-sm">We will be in touch within one working day.</p>
-          </div>
-        )}
         <p class="eyebrow">Enquiry form</p>
-        <h2 class="h-section mt-3">Quote within 24 hours.</h2>
+        <h2 class="h-section mt-3">Request a quote.</h2>
         <p class="prose-body mt-3 max-w-prose">
           The more you tell us about the floor — surface, area, use of the space, any safety concerns — the more
           specific our reply can be. If you would rather not use the form, the email and phone are above.

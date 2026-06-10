@@ -41,12 +41,23 @@ To find a different Unsplash photo, use the search URL in the table.
 | ☑ Unsplash | `about` | About page | Ennis, Co. Clare, Ireland | https://unsplash.com/s/photos/ennis-county-clare-ireland | https://www.pexels.com/search/ennis%20county%20clare%20ireland/ |
 | ☑ Branded PNG | `og` (`/og-default.png`) | OG + Twitter card | branded social card (real photo + logo would be a future upgrade) | https://unsplash.com/s/photos/polished-marble-hospital-corridor | https://www.pexels.com/search/polished%20marble%20hospital%20corridor/ |
 
+### Recent-work before/after gallery (client-supplied — live)
+
+Real client before/after photos now ship on the site. They live in `public/images/work/` and are registered in **`src/data/work.ts`** (each with `alt`, `tag` and `caption`). Pages reference them by key via `pickWork([...])`, rendered through `src/components/BeforeAfterGallery.astro`:
+
+- **Home** (`/`, “Recent work” section) — 8-photo gallery spanning marble, stone, wood, safety flooring and leisure.
+- **Marble & Stone Restoration** and **Wooden Floor Restoration** service pages — per-service galleries (set via the optional `gallery` field on each entry in `src/data/serviceContent.ts`).
+- **Sectors** page — one before/after proof shot per sector block.
+
+To add or swap photos: drop the file into `public/images/work/`, add/adjust the entry in `src/data/work.ts`, then list its key on the relevant page. The full set of 40+ originals supplied by the client is kept (un-deployed) in `_source-photos/` at the project root.
+
 ### Logos (client-supplied — present in `public/`)
 
 | Done | File | Notes |
 | --- | --- | --- |
 | ☑ | `public/logo.jpeg` | SaniSafe Solutions, used in Header + Footer + favicon. Currently a JPEG — a transparent PNG or SVG should be requested from the client. |
 | ☑ | `public/sliptest-logo.jpeg` | SlipTest sub-brand, used on the SlipTest service page hero and the home page SlipTest explainer. Same TODO — request transparent PNG or SVG. |
+| ☑ | `public/gym-sanisafe.jpeg` | Coral Gym — client logo, shown in the home page “Trusted by” strip (registered in `partners` in `src/data/work.ts`). Add further client logos to that array. |
 | ☐ | `public/logo.svg` | **TODO**: client to supply an SVG (or transparent PNG) of the SaniSafe Solutions logo. A JPEG logo will show a white box around it on coloured backgrounds. Until then, the Header and Footer both place the JPEG on a white tile to mask this. |
 
 ### Client-supplied reference images (not embedded on the live site)

@@ -19,6 +19,9 @@ pnpm-debug.log*
 .env.local
 .env.production
 
+# raw source photography (originals, not served by the site)
+_source-photos/
+
 # macOS
 .DS_Store
 

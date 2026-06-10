@@ -4,6 +4,7 @@ import Section from '../components/Section.astro';
 import Hero from '../components/Hero.astro';
 import CTA from '../components/CTA.astro';
 import { images } from '../data/images';
+import { work, type WorkKey } from '../data/work';
 
 type SectorBlock = {
   slug: string;
@@ -12,6 +13,8 @@ type SectorBlock = {
   imageKey: keyof typeof images;
   bullets: string[];
   audience: string;
+  /** Optional before/after proof shot — key into src/data/work.ts. */
+  work?: WorkKey;
 };
 
 const sectorBlocks: SectorBlock[] = [
@@ -19,45 +22,46 @@ const sectorBlocks: SectorBlock[] = [
     slug: 'hospital-and-healthcare',
     title: 'Hospital & Healthcare',
     intro:
-      'Hospitals, primary-care centres, nursing homes and dental practices. Hard floors that are cleaned several times a day with detergents that can themselves change slip resistance.',
+      'Hospitals, primary-care centres, nursing homes and dental practices. These floors demand the highest standards of hygiene and floor safety.',
     imageKey: 'sectorHospital',
     bullets: [
-      'Pendulum testing scheduled around clinical use of the area.',
-      'Restoration of vinyl, terrazzo, ceramic and natural stone — all common in healthcare estates.',
+      'Restoration and deep cleaning of vinyl, ceramic and marmoleum floors — all common in healthcare settings.',
       'Anti-slip treatments that survive frequent wet cleaning.',
       'Documented PTV per zone for H&S, infection-control and insurance files.',
     ],
     audience:
-      'Estates managers, infection-control leads and H&S officers in HSE, voluntary, private and primary-care settings.',
+      'Operations managers, infection-control managers and H&S officers in HSE, voluntary, private and primary-care settings.',
+    work: 'greenClinicFloor',
   },
   {
     slug: 'commercial',
     title: 'Commercial — hotels, retail, offices, leisure & schools',
     intro:
-      'Customer-facing floors that have to look the part and stay safe under foot traffic, spills and frequent cleaning. Trading hours matter.',
+      'Customer-facing floors that have to look the part and stay safe under high-volume foot traffic, spills and frequent cleaning. Trading and opening hours sensitive.',
     imageKey: 'sectorCommercial',
     bullets: [
-      'Hotels: lobby marble restoration over a weekend, pool surround anti-slip.',
-      'Retail: polished concrete and stone floors restored out of trading hours.',
-      'Offices: low-dust hardwood restoration with minimal disruption.',
-      'Leisure centres and schools: etched lane markers, hazard zones and pendulum testing on changing-room floors.',
+      'Hotels: lobby marble, tile and porcelain restoration, pool-surround cleaning, limescale removal and anti-slip treatments.',
+      'Retail: travertine, wood and stone floors restored outside of trading hours.',
+      'Offices: floor restoration with minimal disruption.',
+      'Leisure centres and schools: changing-room floors, pool decks, classrooms and hallways.',
     ],
     audience:
-      'Operations directors, facilities managers, general managers and procurement leads.',
+      'Operations managers, facilities managers, general managers and school management.',
+    work: 'yellowSchoolFloor',
   },
   {
     slug: 'domestic',
     title: 'Domestic',
     intro:
-      'Marble lobbies, hardwood living areas, polished concrete kitchens, tiled bathrooms — the same standard of work we apply on commercial sites, at a price that makes sense for a home.',
+      'Marble lobbies, hardwood living areas, travertine and tiled kitchens, tiled bathrooms — the same standard of work we apply on commercial sites, at a price that makes sense for a home.',
     imageKey: 'sectorDomestic',
     bullets: [
-      'Restoration of marble, hardwood and tiled floors without ripping them out.',
-      'Anti-slip treatments for bathrooms, hallways and pool surrounds.',
-      'Honest assessment — we tell you when a re-coat is enough.',
-      'Clean, low-dust working methods in occupied homes.',
+      'Restoration of marble, hardwood and tiled floors without replacing the floor.',
+      'Anti-slip treatments for bathrooms, hallways and wet rooms.',
+      'Clean, low-dust and low-odour working methods in occupied homes.',
     ],
     audience: 'Homeowners and interior architects across Ireland.',
+    work: 'marbleBathroom',
   },
 ];
 ---
@@ -68,8 +72,8 @@ const sectorBlocks: SectorBlock[] = [
 >
   <Hero
     eyebrow="Sectors we serve"
-    headline="One standard. Three different briefs."
-    subhead="The way a floor is used changes the brief. Compliance and infection control drive healthcare. Trading hours and brand drive commercial. Care and value drive domestic."
+    headline="A constant standard, with three different briefs."
+    subhead="The way a floor is used changes the brief. Compliance and infection control drive healthcare facilities. Trading hours, customer inconvenience and brand preservation drive our commercial customers. Care and value for money drive domestic customers."
     variant="navy"
     imageKey="sectorCommercial"
   >
@@ -108,6 +112,23 @@ const sectorBlocks: SectorBlock[] = [
               ))}
             </ul>
             <p class="mt-5 text-sm text-ink-slate"><strong class="text-brand-navy">Who we talk to:</strong> {s.audience}</p>
+            {s.work && (
+              <figure class="mt-6 overflow-hidden rounded-xl border border-surface-grey bg-white">
+                <div class="relative">
+                  <img
+                    src={work[s.work].src}
+                    alt={work[s.work].alt}
+                    loading="lazy"
+                    decoding="async"
+                    class="block w-full h-auto"
+                  />
+                  <span class="absolute left-3 top-3 rounded-full bg-brand-navy/85 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
+                    Before / After
+                  </span>
+                </div>
+                <figcaption class="px-4 py-3 text-sm text-ink-slate">{work[s.work].caption}</figcaption>
+              </figure>
+            )}
             <div class="mt-6 flex flex-wrap gap-3">
               <a href="/contact" class="btn-primary">Request a quote</a>
               <a href="/services/sliptest" class="btn-secondary">Pendulum slip test</a>

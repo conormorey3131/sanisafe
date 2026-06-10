@@ -5,6 +5,9 @@ export const site = {
   domain: 'sanisafe.ie',
   url: 'https://sanisafe.ie',
   email: 'info@sanisafe.ie',
+  // TODO: paste the Web3Forms access key for info@sanisafe.ie (free, instant at https://web3forms.com).
+  // Until this is set to a real key, the contact form falls back to opening the visitor's email app.
+  web3formsAccessKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
   phoneDisplay: '+353 86 179 7079',
   phoneHref: 'tel:+353861797079',
   location: {
@@ -14,7 +17,7 @@ export const site = {
     // TODO: real street address once confirmed
     streetAddressDisplay: 'Ennis, Co. Clare — serving all of Ireland.',
   },
-  hours: 'Mon–Fri, 08:00–18:00. Emergency call-outs by arrangement.',
+  hours: 'Mon–Fri, 08:00–18:00.',
   // TODO: replace placeholder with real CRO number once issued
   croDisplay: 'CRO No.: [PLACEHOLDER — CRO registration pending]',
   subBrand: {
@@ -34,9 +37,10 @@ export const nav = [
   { label: 'Services', href: '/services', children: [
     { label: 'Marble & Stone Restoration', href: '/services/marble-and-stone-restoration' },
     { label: 'Wooden Floor Restoration', href: '/services/wooden-floor-restoration' },
-    { label: 'Polished Concrete', href: '/services/polished-concrete' },
+    { label: 'Travertine Restoration', href: '/services/travertine' },
+    { label: 'Marmoleum Floor Restoration', href: '/services/marmoleum' },
     { label: 'Anti-Slip Treatments', href: '/services/anti-slip-treatments' },
-    { label: 'Etching & Graphics', href: '/services/etching-and-graphics' },
+    { label: 'Deep Clean & Stain Removal', href: '/services/deep-cleaning' },
     { label: 'SlipTest — Pendulum Testing', href: '/services/sliptest' },
   ] },
   { label: 'Sectors', href: '/sectors' },
@@ -62,12 +66,20 @@ export const services = [
     imageKey: 'serviceWood' as const,
   },
   {
-    slug: 'polished-concrete',
-    title: 'Polished Concrete',
-    short: 'Polished Concrete',
-    promise: 'Mechanically polished concrete for durable, low-maintenance floors.',
+    slug: 'travertine',
+    title: 'Travertine Restoration',
+    short: 'Travertine',
+    promise: 'Grind, hone, fill and polish travertine back to a smooth, even finish.',
     accent: 'green' as const,
-    imageKey: 'serviceConcrete' as const,
+    imageKey: 'serviceTravertine' as const,
+  },
+  {
+    slug: 'marmoleum',
+    title: 'Marmoleum Floor Restoration',
+    short: 'Marmoleum',
+    promise: 'Strip, clean and re-polish marmoleum and linoleum floors to a fresh, even sheen.',
+    accent: 'blue' as const,
+    imageKey: 'serviceMarmoleum' as const,
   },
   {
     slug: 'anti-slip-treatments',
@@ -78,12 +90,12 @@ export const services = [
     imageKey: 'serviceAntiSlip' as const,
   },
   {
-    slug: 'etching-and-graphics',
-    title: 'Etching & Graphics',
-    short: 'Etching & Graphics',
-    promise: 'Permanent etched graphics and lane markings for pools and leisure.',
+    slug: 'deep-cleaning',
+    title: 'Deep Clean & Stain Removal',
+    short: 'Deep Cleaning',
+    promise: 'Specialist deep cleaning and stain removal for tile, stone, wood, concrete and marmoleum.',
     accent: 'blue' as const,
-    imageKey: 'serviceEtching' as const,
+    imageKey: 'serviceDeepClean' as const,
   },
   {
     slug: 'sliptest',
@@ -91,7 +103,7 @@ export const services = [
     short: 'SlipTest',
     promise: 'Pendulum (PTV) testing and full insurance reports under our SlipTest service.',
     accent: 'yellow' as const,
-    imageKey: 'serviceSlipTest' as const,
+    imageKey: 'serviceSlipTestCard' as const,
   },
 ] as const;
 

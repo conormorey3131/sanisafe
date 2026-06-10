@@ -40,6 +40,16 @@ export const images = {
     swapSource: 'unsplash',
   },
 
+  // ---- Home hero (LCP) — real restoration photography to lead on cleaning & restoration ----
+  heroHome: {
+    src: '/images/work/oak-living-room.jpeg',
+    alt: 'Restored oak floor re-finished to a warm, even sheen',
+    width: 1600,
+    height: 1067,
+    swapQuery: 'restored hardwood floor warm interior',
+    swapSource: 'unsplash',
+  },
+
   // ---- Service cards ----
   serviceMarble: {
     src: unsplash('photo-1620207418302-439b387441b0', 800),
@@ -57,28 +67,36 @@ export const images = {
     swapQuery: 'restored hardwood floor sanding',
     swapSource: 'unsplash',
   },
-  serviceConcrete: {
-    src: unsplash('photo-1497366216548-37526070297c', 800),
-    alt: 'Polished concrete floor in a large open space',
+  serviceTravertine: {
+    src: '/images/work/marble-hallway-polished.jpeg',
+    alt: 'Travertine floor honed and polished back to a clear, even finish',
     width: 800,
     height: 600,
-    swapQuery: 'polished concrete floor warehouse',
+    swapQuery: 'travertine floor polishing close up',
+    swapSource: 'unsplash',
+  },
+  serviceMarmoleum: {
+    src: '/images/work/yellow-school-floor.jpeg',
+    alt: 'Marmoleum floor stripped back and polished to a clean sheen',
+    width: 800,
+    height: 600,
+    swapQuery: 'marmoleum linoleum floor polished',
     swapSource: 'unsplash',
   },
   serviceAntiSlip: {
-    src: unsplash('photo-1582719471384-894fbb16e074', 800),
-    alt: 'Wet tiled floor — anti-slip treatment context',
+    src: unsplash('photo-1571902943202-507ec2618e8f', 800),
+    alt: 'Swimming pool deck with a wet tiled surround',
     width: 800,
     height: 600,
-    swapQuery: 'wet floor anti slip treatment',
+    swapQuery: 'swimming pool deck wet tiles anti slip',
     swapSource: 'unsplash',
   },
-  serviceEtching: {
-    src: unsplash('photo-1571902943202-507ec2618e8f', 800),
-    alt: 'Tiled pool-side surface with lane graphics',
+  serviceDeepClean: {
+    src: '/images/work/slate-floor-sealed.jpeg',
+    alt: 'Slate floor before and after a deep clean and re-seal',
     width: 800,
     height: 600,
-    swapQuery: 'swimming pool tile graphics leisure centre',
+    swapQuery: 'deep clean stain removal tiled floor',
     swapSource: 'unsplash',
   },
   serviceSlipTest: {
@@ -88,6 +106,15 @@ export const images = {
     height: 600,
     swapQuery: 'pendulum slip test equipment floor',
     swapSource: 'pexels',
+  },
+  // Homepage service card for SlipTest — a pool deck (the SlipTest page hero keeps serviceSlipTest)
+  serviceSlipTestCard: {
+    src: '/images/work/spa-poolside-tile.jpeg',
+    alt: 'Pool-deck tiling restored to a safe, clean surface',
+    width: 800,
+    height: 600,
+    swapQuery: 'swimming pool deck wet tiles',
+    swapSource: 'unsplash',
   },
 
   // ---- Sector tiles ----

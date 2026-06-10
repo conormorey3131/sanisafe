@@ -11,7 +11,8 @@ export default {
           green: '#8BC34A',
           // text-on-green background (passes WCAG AA for white text)
           greenDark: '#33691E',
-          navy: '#0D47A1',
+          // Brightened from #0D47A1 for a lighter overall feel (still WCAG-AA, ~7:1, against white)
+          navy: '#1257A6',
           yellow: '#F5C518',
         },
         ink: {
