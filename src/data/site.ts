@@ -17,8 +17,6 @@ export const site = {
     streetAddressDisplay: 'Ennis, Co. Clare — serving all of Ireland.',
   },
   hours: 'Mon–Fri, 08:00–18:00.',
-  // TODO: replace placeholder with real CRO number once issued
-  croDisplay: 'CRO No.: [PLACEHOLDER — CRO registration pending]',
   subBrand: {
     name: 'SlipTest',
     strapline: 'Confidence in every step.',
