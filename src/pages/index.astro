@@ -44,7 +44,6 @@ const homeJsonLd = [
   }),
 ];
 
-const slipTest = services.find((s) => s.slug === 'sliptest')!;
 const otherServices = services.filter((s) => s.slug !== 'sliptest');
 const processSteps = [
   { n: '01', title: 'Survey & agreed treatment', body: 'On-site visit. Pendulum readings, photographs, condition assessment.' },
@@ -96,7 +95,6 @@ const testimonials = [
     eager
   >
     <a slot="ctas" href="/contact" class="btn-primary">Request a free quote</a>
-    <a slot="ctas" href="/services/sliptest" class="btn-yellow-outline">Book a SlipTest survey</a>
 
     <p class="mt-8 text-sm text-white/70 max-w-md">
       Protection You Can Trust. Safety You Can Stand On!
@@ -109,13 +107,14 @@ const testimonials = [
       <p class="eyebrow">What we do</p>
       <h2 class="h-section mt-3">Restoration, deep cleaning and slip safety, under one roof.</h2>
       <p class="lead mt-4">
-        Seven services that cover the lifecycle of your floor — from a deep restoration of marble, wood and
-        travertine through to anti-slip treatments, deep cleaning and pendulum slip testing.
+        Six core services that cover the lifecycle of your floor — from a deep restoration of marble, wood and
+        travertine through to anti-slip treatments and deep cleaning. Our pendulum slip-testing service,
+        SlipTest, is detailed below.
       </p>
     </div>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((s) => (
+      {otherServices.map((s) => (
         <ServiceCard
           title={s.title}
           promise={s.promise}
