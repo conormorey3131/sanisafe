@@ -16,6 +16,8 @@ export type ServiceContent = {
   faqs: Array<{ q: string; a: string }>;
   /** Optional before/after gallery — keys into src/data/work.ts. */
   gallery?: WorkKey[];
+  /** Optional standalone illustrative image (not a before/after collage). */
+  illustration?: { src: string; alt: string; caption?: string };
   metaTitle: string;
   metaDescription: string;
 };
@@ -243,6 +245,11 @@ export const serviceContent: Record<string, ServiceContent> = {
       { q: 'Is there a payment plan arrangement?', a: 'Yes — we offer scheduled term payments to our regular business partners.' },
     ],
     gallery: ['slateFloor', 'limestoneFlagstone', 'marbleBathroom', 'churchFlagstone'],
+    illustration: {
+      src: '/images/work/pool-limescale-deposits.webp',
+      alt: 'Limescale and mineral deposits built up along the waterline tiles of a swimming pool',
+      caption: 'Limescale & deposits — understanding and prevention. We lift built-up limescale that everyday cleaning leaves behind.',
+    },
     metaTitle: 'Deep Clean & Stain Removal for Floors in Ireland | SaniSafe Solutions',
     metaDescription:
       'Specialist deep cleaning and stain removal for marble, tile, stone, wood, concrete and marmoleum floors across Ireland. Based in Ennis, nationwide service.',

@@ -109,8 +109,8 @@ export const images = {
   },
   // Homepage service card for SlipTest — a pool deck (the SlipTest page hero keeps serviceSlipTest)
   serviceSlipTestCard: {
-    src: '/images/work/spa-poolside-tile.jpeg',
-    alt: 'Pool-deck tiling restored to a safe, clean surface',
+    src: '/images/work/killarney-pool-deck.webp',
+    alt: 'Indoor pool deck at a Killarney leisure centre — the kind of wet surface we slip-test',
     width: 800,
     height: 600,
     swapQuery: 'swimming pool deck wet tiles',
@@ -132,6 +132,15 @@ export const images = {
     width: 1200,
     height: 800,
     swapQuery: 'hotel lobby marble floor',
+    swapSource: 'unsplash',
+  },
+  // Schools — a classroom with a polished hard floor (we do a lot of school work)
+  classroom: {
+    src: unsplash('photo-1580582932707-520aed937b7b', 1200),
+    alt: 'Empty classroom with desks, a blackboard and a clean, polished hard floor',
+    width: 1200,
+    height: 800,
+    swapQuery: 'empty classroom polished floor',
     swapSource: 'unsplash',
   },
   sectorDomestic: {

@@ -16,6 +16,9 @@ export type WorkItem = {
   alt: string;
   tag: string;
   caption: string;
+  /** Corner badge text. Defaults to "Before / After" — set this for single
+   *  (non-before/after) photos such as facilities we maintain. */
+  badge?: string;
 };
 
 export const work = {
@@ -103,11 +106,12 @@ export const work = {
     tag: 'Schools',
     caption: 'Marmoleum floor — stripped back and polished',
   },
-  spaPoolside: {
-    src: '/images/work/spa-poolside-tile.jpeg',
-    alt: 'Spa poolside floor before and after — lifting, damaged wood-effect tiles restored to a clean, sound surface',
+  killarneyPool: {
+    src: '/images/work/killarney-pool-deck.webp',
+    alt: 'Indoor swimming pool and tiled pool deck at a Killarney leisure centre we maintain',
     tag: 'Leisure',
-    caption: 'Spa poolside — restored to a safe, clean surface',
+    caption: 'Killarney leisure-centre pool deck — a facility we maintain',
+    badge: 'On site',
   },
 } satisfies Record<string, WorkItem>;
 

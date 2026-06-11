@@ -38,7 +38,7 @@ const sectorBlocks: SectorBlock[] = [
     title: 'Commercial — hotels, retail, offices, leisure & schools',
     intro:
       'Customer-facing floors that have to look the part and stay safe under high-volume foot traffic, spills and frequent cleaning. Trading and opening hours sensitive.',
-    imageKey: 'sectorCommercial',
+    imageKey: 'classroom',
     bullets: [
       'Hotels: lobby marble, tile and porcelain restoration, pool-surround cleaning, limescale removal and anti-slip treatments.',
       'Retail: travertine, wood and stone floors restored outside of trading hours.',
@@ -123,7 +123,7 @@ const sectorBlocks: SectorBlock[] = [
                     class="block w-full h-auto"
                   />
                   <span class="absolute left-3 top-3 rounded-full bg-brand-navy/85 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
-                    Before / After
+                    {work[s.work].badge ?? 'Before / After'}
                   </span>
                 </div>
                 <figcaption class="px-4 py-3 text-sm text-ink-slate">{work[s.work].caption}</figcaption>

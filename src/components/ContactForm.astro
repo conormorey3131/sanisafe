@@ -36,9 +36,9 @@ const { detailed = true } = Astro.props;
 
   <div class="grid gap-5 sm:grid-cols-2">
     <div>
-      <label for="phone" class="block text-sm font-semibold text-brand-navy">Phone</label>
+      <label for="phone" class="block text-sm font-semibold text-brand-navy">Phone <span aria-hidden="true" class="text-brand-blue">*</span></label>
       <input
-        id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"
+        id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel"
         class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
       />
     </div>
@@ -49,6 +49,15 @@ const { detailed = true } = Astro.props;
         class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
       />
     </div>
+  </div>
+
+  <div>
+    <label for="address" class="block text-sm font-semibold text-brand-navy">Address / site location</label>
+    <input
+      id="address" name="address" type="text" autocomplete="street-address"
+      placeholder="Street, town, county / Eircode"
+      class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
+    />
   </div>
 
   {detailed && (
@@ -74,6 +83,11 @@ const { detailed = true } = Astro.props;
       placeholder="Surface type, approximate area, any safety concerns, deadlines."
       class="mt-2 w-full rounded-md border border-surface-grey bg-white px-3 py-2.5 text-base text-ink-charcoal focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30"
     ></textarea>
+    <p class="mt-2 text-sm text-ink-slate">
+      Got photos of the floor? They really help us quote.
+      <a class="font-semibold text-brand-navy underline" href={`mailto:${site.email}?subject=${encodeURIComponent('Floor photos — enquiry')}`}>Email them to {site.email}</a>
+      and we'll match them to your enquiry.
+    </p>
   </div>
 
   <div class="flex flex-wrap items-center gap-4 pt-2">
@@ -121,6 +135,7 @@ const { detailed = true } = Astro.props;
         `Email: ${value('email')}`,
         value('phone') && `Phone: ${value('phone')}`,
         value('company') && `Company / Site: ${value('company')}`,
+        value('address') && `Address: ${value('address')}`,
         service && `Service of interest: ${service}`,
         '',
         value('message'),

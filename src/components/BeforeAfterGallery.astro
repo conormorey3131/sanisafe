@@ -26,7 +26,7 @@ const colClass = columns === 3 ? 'sm:columns-2 lg:columns-3' : 'sm:columns-2';
           class="block w-full h-auto"
         />
         <span class="absolute left-3 top-3 rounded-full bg-brand-navy/85 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
-          Before / After
+          {item.badge ?? 'Before / After'}
         </span>
       </div>
       <figcaption class="p-5">

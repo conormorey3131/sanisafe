@@ -92,6 +92,24 @@ const faqLd = JSON.stringify({
     </ol>
   </Section>
 
+  {/* Standalone illustrative image (e.g. limescale & deposits) */}
+  {content.illustration && (
+    <Section variant="white">
+      <figure class="mx-auto max-w-3xl overflow-hidden rounded-xl border border-surface-grey bg-white shadow-card">
+        <img
+          src={content.illustration.src}
+          alt={content.illustration.alt}
+          loading="lazy"
+          decoding="async"
+          class="block w-full h-auto"
+        />
+        {content.illustration.caption && (
+          <figcaption class="px-5 py-4 text-sm text-ink-slate">{content.illustration.caption}</figcaption>
+        )}
+      </figure>
+    </Section>
+  )}
+
   {/* Before / after */}
   {gallery.length > 0 && (
     <Section variant="offwhite">
