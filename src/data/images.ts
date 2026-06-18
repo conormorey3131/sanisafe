@@ -52,10 +52,10 @@ export const images = {
 
   // ---- Service cards ----
   serviceMarble: {
-    src: unsplash('photo-1620207418302-439b387441b0', 800),
-    alt: 'Restored marble floor in a modern interior',
-    width: 800,
-    height: 600,
+    src: '/images/work/marble-bathroom.jpeg',
+    alt: 'Marble bathroom floor before and after diamond-pad polishing — the gloss restored',
+    width: 1080,
+    height: 1920,
     swapQuery: 'marble floor polishing close up',
     swapSource: 'unsplash',
   },
@@ -84,11 +84,11 @@ export const images = {
     swapSource: 'unsplash',
   },
   serviceAntiSlip: {
-    src: unsplash('photo-1571902943202-507ec2618e8f', 800),
-    alt: 'Swimming pool deck with a wet tiled surround',
+    src: '/images/work/killarney-pool-deck.webp',
+    alt: 'Wet pool deck at a Killarney leisure centre — the kind of surface we anti-slip treat',
     width: 800,
     height: 600,
-    swapQuery: 'swimming pool deck wet tiles anti slip',
+    swapQuery: 'leisure centre swimming pool deck wet tiles anti slip',
     swapSource: 'unsplash',
   },
   serviceDeepClean: {
