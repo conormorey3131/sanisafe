@@ -114,7 +114,7 @@ const testimonials = [
       <ul class="mt-6 flex flex-wrap items-start justify-center gap-x-8 gap-y-8 sm:gap-x-10">
         {partners.map((p) => (
           <li class="flex w-32 flex-col items-center gap-3 text-center sm:w-40">
-            <div class="flex h-16 w-full items-center justify-center rounded-lg bg-white px-4 py-3 shadow-card sm:h-20">
+            <div class:list={['flex h-16 w-full items-center justify-center rounded-lg px-4 py-3 shadow-card sm:h-20', p.dark ? 'bg-brand-navy' : 'bg-white']}>
               <img
                 src={p.logo}
                 alt={`${p.name} — a SaniSafe Solutions client`}
