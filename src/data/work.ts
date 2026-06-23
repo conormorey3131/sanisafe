@@ -32,13 +32,13 @@ export const work = {
     src: '/images/work/marble-bathroom.jpeg',
     alt: 'Marble bathroom floor before and after — etched, dull tiles diamond-polished to a bright, even sheen',
     tag: 'Marble & stone',
-    caption: 'Marble bathroom — etching removed, gloss restored',
+    caption: 'Marble bathroom — diamond-pad polishing, gloss restored',
   },
   churchFlagstone: {
     src: '/images/work/church-flagstone.jpeg',
     alt: 'Church aisle sandstone flagstones before and after — dark, ingrained dirt lifted to reveal clean natural stone',
     tag: 'Natural stone',
-    caption: 'Church flagstone aisle — decades of grime lifted',
+    caption: 'Church flagstone aisle — decades of grime removed',
   },
   slateFloor: {
     src: '/images/work/slate-floor-sealed.jpeg',
