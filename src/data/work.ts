@@ -127,8 +127,8 @@ export const pickWork = (keys: WorkKey[]): WorkItem[] => keys.map((k) => work[k]
  * the strip renders them at a uniform height in greyscale.
  */
 export const partners = [
-  { name: 'Fitzgerald Woodlands House Hotel, Adare', logo: '/images/clients/fitzgerald-woodlands.png', width: 120, height: 114 },
-  { name: 'Westport Woods Hotel', logo: '/images/clients/westport-woods.png', width: 171, height: 66 },
-  { name: 'Nuremore Estate', logo: '/images/clients/nuremore.png', width: 240, height: 240 },
-  { name: 'Hotel Killarney', logo: '/images/clients/killarney.svg', width: 213, height: 85 },
+  { name: 'Fitzgerald Woodlands House Hotel, Adare', label: 'Fitzgerald Woodlands', logo: '/images/clients/fitzgerald-woodlands.png', width: 120, height: 114 },
+  { name: 'Westport Woods Hotel', label: 'Westport Woods Hotel', logo: '/images/clients/westport-woods.png', width: 171, height: 66 },
+  { name: 'Nuremore Estate', label: 'Nuremore Estate', logo: '/images/clients/nuremore.png', width: 240, height: 240 },
+  { name: 'Hotel Killarney', label: 'Hotel Killarney', logo: '/images/clients/killarney.svg', width: 213, height: 85 },
 ] as const;
