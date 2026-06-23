@@ -9,7 +9,7 @@ import CTA from '../components/CTA.astro';
 import BeforeAfterGallery from '../components/BeforeAfterGallery.astro';
 import { services, sectors, site } from '../data/site';
 import { images } from '../data/images';
-import { pickWork } from '../data/work';
+import { pickWork, partners } from '../data/work';
 
 const homeWork = pickWork([
   'redSafetyFloor',
@@ -107,19 +107,25 @@ const testimonials = [
 
   {/* ---------- TRUST BAND ---------- */}
   <div class="bg-surface-offwhite border-b border-surface-grey">
-    <div class="container-page py-6 sm:py-7">
+    <div class="container-page py-8 sm:py-10">
       <p class="text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-slate">
         Trusted by hotels, leisure centres, healthcare, schools &amp; homes across Ireland
       </p>
-      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-semibold text-brand-navy">
-        <span>Fitzgerald Woodlands House Hotel</span>
-        <span aria-hidden="true" class="text-surface-grey">·</span>
-        <span>Westport Woods Hotel</span>
-        <span aria-hidden="true" class="text-surface-grey">·</span>
-        <span>The Nuremore Hotel</span>
-        <span aria-hidden="true" class="text-surface-grey">·</span>
-        <span>Killarney Leisure Centre</span>
-      </div>
+      <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">
+        {partners.map((p) => (
+          <li>
+            <img
+              src={p.logo}
+              alt={`${p.name} — a SaniSafe Solutions client`}
+              width={p.width}
+              height={p.height}
+              loading="lazy"
+              decoding="async"
+              class="h-10 w-auto object-contain opacity-70 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0 sm:h-12"
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 

@@ -121,9 +121,14 @@ export type WorkKey = keyof typeof work;
 export const pickWork = (keys: WorkKey[]): WorkItem[] => keys.map((k) => work[k]);
 
 /**
- * Partner / client logos (real, client-supplied — present in /public).
- * Shown in the "Trusted by" strip.
+ * Partner / client logos (real, client-supplied — present in /public/images/clients).
+ * Shown in the "Trusted by" strip under the home hero. `width`/`height` are the
+ * intrinsic pixel dimensions so the row reserves space and avoids layout shift;
+ * the strip renders them at a uniform height in greyscale.
  */
 export const partners = [
-  { name: 'Coral Gym', logo: '/gym-sanisafe.jpeg' },
+  { name: 'Fitzgerald Woodlands House Hotel, Adare', logo: '/images/clients/fitzgerald-woodlands.png', width: 120, height: 114 },
+  { name: 'Westport Woods Hotel', logo: '/images/clients/westport-woods.png', width: 171, height: 66 },
+  { name: 'Nuremore Estate', logo: '/images/clients/nuremore.png', width: 240, height: 240 },
+  { name: 'Hotel Killarney', logo: '/images/clients/killarney.svg', width: 213, height: 85 },
 ] as const;
