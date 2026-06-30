@@ -171,7 +171,7 @@ export const partners = [
   { name: 'Hotel Killarney', label: 'Hotel Killarney', logo: '/images/clients/killarney.svg', width: 213, height: 85, dark: true },
   // Retail / forecourt clients. Square badge logos render at the tile height.
   { name: 'Spar', label: 'Spar', logo: '/images/clients/spar.svg', width: 120, height: 120, dark: false },
-  { name: 'Centra', label: 'Centra', logo: '/images/clients/centra.svg', width: 120, height: 120, dark: false },
+  { name: 'Centra', label: 'Centra', logo: '/images/clients/centra.png', width: 120, height: 120, dark: false },
   { name: 'SuperValu', label: 'SuperValu', logo: '/images/clients/supervalu.svg', width: 120, height: 120, dark: false },
   { name: 'Mace', label: 'Mace', logo: '/images/clients/mace.png', width: 275, height: 183, dark: false },
   { name: 'Maxol', label: 'Maxol', logo: '/images/clients/maxol.jpg', width: 814, height: 600, dark: false },
