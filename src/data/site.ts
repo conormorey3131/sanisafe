@@ -41,6 +41,7 @@ export const nav = [
     { label: 'SlipTest — Pendulum Testing', href: '/services/sliptest' },
   ] },
   { label: 'Sectors', href: '/sectors' },
+  { label: 'Gallery', href: '/gallery' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ] as const;

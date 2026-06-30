@@ -152,6 +152,16 @@ export const images = {
     swapSource: 'unsplash',
   },
 
+  // ---- Gallery (hotel & leisure work) ----
+  galleryHero: {
+    src: '/images/work/galmount-hotel-pool.jpeg',
+    alt: 'Leisure-centre pool at The Galmount Hotel with a clean, slip-safe mosaic-tiled deck',
+    width: 1600,
+    height: 937,
+    swapQuery: 'hotel leisure centre swimming pool tiled deck',
+    swapSource: 'unsplash',
+  },
+
   // ---- About / location ----
   about: {
     src: unsplash('photo-1590089415225-401ed6f9db8e', 1200),

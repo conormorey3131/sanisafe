@@ -22,6 +22,9 @@ const homeWork = pickWork([
   'pubFloor',
 ]);
 
+// A few hotel & leisure jobs for the home page; the full set lives on /gallery.
+const hotelFeature = pickWork(['galmountPool', 'hotelEuropePool', 'powerscourtSpa']);
+
 const homeJsonLd = [
   JSON.stringify({
     '@context': 'https://schema.org',
@@ -265,6 +268,25 @@ const testimonials = [
 
     <div class="mt-10">
       <a href="/contact" class="btn-primary">Get a Free Floor Assessment</a>
+    </div>
+  </Section>
+
+  {/* ---------- HOTELS & LEISURE ---------- */}
+  <Section variant="offwhite" id="hotels-leisure">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div class="max-w-2xl">
+        <p class="eyebrow">Hotels &amp; leisure</p>
+        <h2 class="h-section mt-3">Trusted by hotels and leisure centres nationwide.</h2>
+        <p class="lead mt-4">
+          From pool decks and spa floors to lobbies and bars, we keep some of the country's busiest hospitality
+          floors clean, sealed and slip-safe — at venues including Hotel Europe Killarney, Powerscourt and The Galmount.
+        </p>
+      </div>
+      <a href="/gallery" class="btn-secondary shrink-0">See all our work</a>
+    </div>
+
+    <div class="mt-10">
+      <BeforeAfterGallery items={hotelFeature} />
     </div>
   </Section>
 

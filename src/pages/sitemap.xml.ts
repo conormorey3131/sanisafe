@@ -11,6 +11,7 @@ const routes: Array<{ path: string; changefreq: string; priority: number }> = [
     priority: s.slug === 'sliptest' ? 0.9 : 0.8,
   })),
   { path: '/sectors', changefreq: 'monthly', priority: 0.7 },
+  { path: '/gallery', changefreq: 'monthly', priority: 0.7 },
   { path: '/about', changefreq: 'yearly', priority: 0.5 },
   { path: '/contact', changefreq: 'yearly', priority: 0.6 },
   // /privacy and /cookies intentionally excluded — noindex DRAFT pages

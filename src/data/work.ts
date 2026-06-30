@@ -113,6 +113,43 @@ export const work = {
     caption: 'Killarney leisure-centre pool deck — a facility we maintain',
     badge: 'On site',
   },
+
+  // ---- Hotel & leisure jobs around the country (single 'finished job' photos) ----
+  galmountPool: {
+    src: '/images/work/galmount-hotel-pool.jpeg',
+    alt: 'Leisure-centre pool at The Galmount Hotel — mosaic-tiled deck, steps and hot tub surround kept clean and slip-safe',
+    tag: 'Hotel & leisure',
+    caption: 'The Galmount Hotel — leisure-centre pool deck',
+    badge: 'On site',
+  },
+  hotelEuropePool: {
+    src: '/images/work/hotel-europe-killarney-pool.jpeg',
+    alt: 'Spa pool at Hotel Europe, Killarney — high-gloss stone floor restored to a clear, reflective finish',
+    tag: 'Hotel & leisure',
+    caption: 'Hotel Europe, Killarney — spa pool floor',
+    badge: 'On site',
+  },
+  powerscourtSpa: {
+    src: '/images/work/powerscourt-hotel-spa-pool.jpeg',
+    alt: 'Spa relaxation pool at Powerscourt Hotel — dark stone poolside floor cleaned and sealed',
+    tag: 'Hotel & leisure',
+    caption: 'Powerscourt Hotel — spa relaxation pool',
+    badge: 'On site',
+  },
+  soHotelsPool: {
+    src: '/images/work/so-hotels-pool.jpeg',
+    alt: 'Hydrotherapy pool at a Só Hotels leisure centre — white-tiled deck and steps kept clean and slip-resistant',
+    tag: 'Hotel & leisure',
+    caption: 'Só Hotels — tiled hydro-pool and steps',
+    badge: 'On site',
+  },
+  poolDeckDeepClean: {
+    src: '/images/work/pool-deck-deep-clean.jpeg',
+    alt: 'Blue safety-floor pool surround mid deep-clean — drainage channel and one section scrubbed back to a clean, even finish',
+    tag: 'Hotel & leisure',
+    caption: 'Pool-surround safety floor — mid deep-clean',
+    badge: 'On site',
+  },
 } satisfies Record<string, WorkItem>;
 
 export type WorkKey = keyof typeof work;
@@ -132,4 +169,10 @@ export const partners = [
   { name: 'Nuremore Estate', label: 'Nuremore Estate', logo: '/images/clients/nuremore.png', width: 240, height: 240, dark: false },
   // Killarney supplied a white/reversed logo — needs a dark tile to be visible.
   { name: 'Hotel Killarney', label: 'Hotel Killarney', logo: '/images/clients/killarney.svg', width: 213, height: 85, dark: true },
+  // Retail / forecourt clients. Square badge logos render at the tile height.
+  { name: 'Spar', label: 'Spar', logo: '/images/clients/spar.svg', width: 120, height: 120, dark: false },
+  { name: 'Centra', label: 'Centra', logo: '/images/clients/centra.svg', width: 120, height: 120, dark: false },
+  { name: 'SuperValu', label: 'SuperValu', logo: '/images/clients/supervalu.svg', width: 120, height: 120, dark: false },
+  { name: 'Mace', label: 'Mace', logo: '/images/clients/mace.png', width: 275, height: 183, dark: false },
+  { name: 'Maxol', label: 'Maxol', logo: '/images/clients/maxol.jpg', width: 814, height: 600, dark: false },
 ] as const;

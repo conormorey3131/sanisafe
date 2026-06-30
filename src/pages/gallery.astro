@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import Hero from '../components/Hero.astro';
+import CTA from '../components/CTA.astro';
+import BeforeAfterGallery from '../components/BeforeAfterGallery.astro';
+import { pickWork } from '../data/work';
+
+// Hotel & leisure jobs from around the country, plus the wider before/after set.
+const hotelWork = pickWork([
+  'galmountPool',
+  'hotelEuropePool',
+  'powerscourtSpa',
+  'soHotelsPool',
+  'killarneyPool',
+  'poolDeckDeepClean',
+]);
+
+const restorationWork = pickWork([
+  'marbleHallway',
+  'marbleBathroom',
+  'oakRestoration',
+  'churchFlagstone',
+  'commercialLobby',
+  'slateFloor',
+  'limestoneFlagstone',
+  'redSafetyFloor',
+  'blueSchoolFloor',
+  'pubFloor',
+]);
+---
+
+<Layout
+  title="Our Work — Hotel, Leisure & Floor Restoration Gallery | SaniSafe Solutions"
+  description="A gallery of SaniSafe Solutions floor work across Ireland — hotel and leisure-centre pool decks, spa floors and restoration jobs at venues including Hotel Europe Killarney, Powerscourt and The Galmount."
+>
+  <Hero
+    eyebrow="Our work"
+    headline="Floors we keep clean, safe and looking the part."
+    subhead="A selection of recent jobs from hotels and leisure centres around the country, alongside restoration work across marble, stone, wood and safety flooring."
+    variant="navy"
+    imageKey="galleryHero"
+  >
+    <a slot="ctas" href="/contact" class="btn-primary">Get a Free Floor Assessment</a>
+  </Hero>
+
+  {/* ---------- HOTELS & LEISURE ---------- */}
+  <Section variant="white" id="hotels-leisure">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Hotels &amp; leisure</p>
+      <h2 class="h-section mt-3">Pool decks and spa floors around the country.</h2>
+      <p class="lead mt-4">
+        Wet pool surrounds, spa floors and leisure-centre decks are some of the most slip-sensitive surfaces a venue
+        has. We keep them clean, sealed and slip-safe at hotels and leisure centres across Ireland.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <BeforeAfterGallery items={hotelWork} />
+    </div>
+  </Section>
+
+  {/* ---------- RESTORATION WORK ---------- */}
+  <Section variant="offwhite" id="restoration">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Restoration</p>
+      <h2 class="h-section mt-3">Before and after, across every floor type.</h2>
+      <p class="lead mt-4">
+        Marble, natural stone, hardwood and safety flooring — brought back to life in place, at a fraction of the cost
+        of replacement.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <BeforeAfterGallery items={restorationWork} />
+    </div>
+  </Section>
+
+  <CTA />
+</Layout>
