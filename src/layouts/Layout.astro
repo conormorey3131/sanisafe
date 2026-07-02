@@ -36,7 +36,7 @@ const defaultJsonLd: string[] = [
     },
     areaServed: 'IE',
     image: ogImageUrl,
-    logo: new URL('/logo.jpeg', site.url).toString(),
+    logo: new URL('/logo_new.png', site.url).toString(),
     slogan: site.tagline,
     sameAs: [],
   }),
@@ -56,8 +56,8 @@ const allJsonLd = [...defaultJsonLd, ...jsonLd];
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
 
-    <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
-    <link rel="apple-touch-icon" href="/logo.jpeg" />
+    <link rel="icon" type="image/png" href="/logo_new.png" />
+    <link rel="apple-touch-icon" href="/logo_new.png" />
 
     <meta name="theme-color" content="#0D47A1" />
     <meta name="format-detection" content="telephone=no" />
