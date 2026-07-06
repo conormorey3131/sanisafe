@@ -164,11 +164,13 @@ export const pickWork = (keys: WorkKey[]): WorkItem[] => keys.map((k) => work[k]
  * the strip renders them at a uniform height in greyscale.
  */
 export const partners = [
-  { name: 'Fitzgerald Woodlands House Hotel, Adare', label: 'Fitzgerald Woodlands', logo: '/images/clients/fitzgerald-woodlands.png', width: 120, height: 114, dark: false },
+  { name: 'Fitzgeralds Woodlands House Hotel & Spa, Adare', label: 'Fitzgeralds Woodlands', logo: '/images/clients/woodlands.jpeg', width: 447, height: 447, dark: false },
   { name: 'Westport Woods Hotel', label: 'Westport Woods Hotel', logo: '/images/clients/westport-woods.png', width: 171, height: 66, dark: false },
   { name: 'Nuremore Estate', label: 'Nuremore Estate', logo: '/images/clients/nuremore.png', width: 240, height: 240, dark: false },
-  // Killarney supplied a white/reversed logo — needs a dark tile to be visible.
-  { name: 'Hotel Killarney', label: 'Hotel Killarney', logo: '/images/clients/killarney.svg', width: 213, height: 85, dark: true },
+  { name: 'The Killarney Park Hotel', label: 'The Killarney Park', logo: '/images/clients/killarney-park.jpeg', width: 900, height: 900, dark: false },
+  { name: 'The Europe Hotel & Resort, Killarney', label: 'The Europe Hotel & Resort', logo: '/images/clients/europe-hotel.jpeg', width: 380, height: 250, dark: false },
+  { name: 'MHL Hotel Collection', label: 'MHL Hotel Collection', logo: '/images/clients/mhl.jpeg', width: 447, height: 447, dark: false },
+  { name: 'The Galmount Hotel', label: 'The Galmount Hotel', logo: '/images/clients/galmount.jpeg', width: 200, height: 200, dark: false },
   // Retail / forecourt clients. Square badge logos render at the tile height.
   { name: 'Spar', label: 'Spar', logo: '/images/clients/spar.svg', width: 120, height: 120, dark: false },
   { name: 'Centra', label: 'Centra', logo: '/images/clients/centra.png', width: 120, height: 120, dark: false },
