@@ -175,6 +175,6 @@ export const partners = [
   { name: 'Spar', label: 'Spar', logo: '/images/clients/spar.svg', width: 120, height: 120, dark: false },
   { name: 'Centra', label: 'Centra', logo: '/images/clients/centra.png', width: 120, height: 120, dark: false },
   { name: 'SuperValu', label: 'SuperValu', logo: '/images/clients/supervalu.svg', width: 120, height: 120, dark: false },
-  { name: 'Mace', label: 'Mace', logo: '/images/clients/mace.png', width: 275, height: 183, dark: false },
+  { name: 'Mace', label: 'Mace', logo: '/images/clients/mace.png', width: 240, height: 90, dark: false },
   { name: 'Maxol', label: 'Maxol', logo: '/images/clients/maxol.jpg', width: 814, height: 600, dark: false },
 ] as const;
