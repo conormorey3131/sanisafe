@@ -172,9 +172,9 @@ export const partners = [
   { name: 'MHL Hotel Collection', label: 'MHL Hotel Collection', logo: '/images/clients/mhl.jpeg', width: 447, height: 447, dark: false },
   { name: 'The Galmount Hotel', label: 'The Galmount Hotel', logo: '/images/clients/galmount.jpeg', width: 200, height: 200, dark: false },
   // Retail / forecourt clients. Square badge logos render at the tile height.
-  { name: 'Spar', label: 'Spar', logo: '/images/clients/spar.svg', width: 120, height: 120, dark: false },
+  { name: 'Spar', label: 'Spar', logo: '/images/clients/spar.png', width: 600, height: 107, dark: false },
   { name: 'Centra', label: 'Centra', logo: '/images/clients/centra.png', width: 120, height: 120, dark: false },
-  { name: 'SuperValu', label: 'SuperValu', logo: '/images/clients/supervalu.svg', width: 120, height: 120, dark: false },
+  { name: 'SuperValu', label: 'SuperValu', logo: '/images/clients/supervalu.png', width: 1200, height: 360, dark: false },
   { name: 'Mace', label: 'Mace', logo: '/images/clients/mace.png', width: 240, height: 90, dark: false },
   { name: 'Maxol', label: 'Maxol', logo: '/images/clients/maxol.jpg', width: 814, height: 600, dark: false },
 ] as const;
