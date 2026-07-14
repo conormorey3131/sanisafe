@@ -23,10 +23,8 @@ export const site = {
     logo: '/sliptest-logo.jpeg',
   },
   social: {
-    // TODO: real social links
-    instagram: '#',
-    linkedin: '#',
-    facebook: '#',
+    instagram: 'https://www.instagram.com/sanisafe.ie/',
+    tiktok: 'https://www.tiktok.com/@sanisafe6',
   },
 } as const;
 
